@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import {
-  AppBar,
-  Toolbar,
   Box,
   Typography,
   IconButton,
@@ -35,115 +33,137 @@ export default function Navbar() {
   const toggleDrawer = () => setMobileOpen((prev) => !prev);
 
   return (
-    <AppBar
-      position="sticky"
-      elevation={1}
-      sx={{
-        backgroundColor: "#f0f2f5",
-        borderBottom: "1px solid #d0d4db",
-      }}
-    >
-      <Toolbar
-        disableGutters
+    <>
+      {/*
+       * Full-width transparent positioning wrapper — invisible, only for layout.
+       * The visible gray pill is the inner Box below.
+       */}
+      <Box
         sx={{
-          px: { xs: 2, md: 3 },
-          minHeight: { xs: 56, md: 62 },
+          position: "fixed",
+          top: 0,
+          left: 0,
+          right: 0,
+          zIndex: 1200,
           display: "flex",
-          alignItems: "center",
-          gap: 1.5,
+          justifyContent: "center",
+          pt: "8px",
+          px: 1,
+          pointerEvents: "none",
         }}
       >
-        {/* ── Logo ── */}
+        {/* ── Visible navbar container — compact gray pill ── */}
         <Box
-          component={Link}
-          to="/"
           sx={{
+            pointerEvents: "auto",
             display: "flex",
             alignItems: "center",
-            gap: 0.8,
-            textDecoration: "none",
-            flexShrink: 0,
-            mr: { md: 1.5 },
+            backgroundColor: "rgba(230, 230, 235, 0.92)",
+            borderRadius: "6px",
+            px: "20px",
+            py: "12px",
+            gap: 0,
+            maxWidth: "100%",
+            boxShadow: "0 2px 8px rgba(0,0,0,0.14)",
           }}
         >
+          {/* ── Logo section ── */}
           <Box
-            component="img"
-            src={ifathomLogo}
-            alt="iFathom logo"
+            component={Link}
+            to="/"
             sx={{
-              width: { xs: 32, md: 36 },
-              height: { xs: 32, md: 36 },
-              objectFit: "contain",
-            }}
-          />
-          <Typography
-            sx={{
-              color: colors.darkText,
-              fontWeight: 800,
-              fontSize: { xs: "1.15rem", md: "1.25rem" },
-              letterSpacing: 0.2,
-              fontFamily: "'Poppins', sans-serif",
+              display: "flex",
+              alignItems: "center",
+              gap: "6px",
+              textDecoration: "none",
+              flexShrink: 0,
+              pr: "10px",
+              mr: "6px",
+              borderRight: "1px solid #c4c8cf",
             }}
           >
-            iFathom
-          </Typography>
-        </Box>
+            <Box
+              component="img"
+              src={ifathomLogo}
+              alt="iFathom logo"
+              sx={{
+                width: 30,
+                height: 30,
+                objectFit: "contain",
+                display: "block",
+              }}
+            />
+            <Typography
+              sx={{
+                color: "#1a1a2e",
+                fontWeight: 700,
+                fontSize: "1rem",
+                letterSpacing: 0.2,
+                fontFamily: "'Poppins', sans-serif",
+                whiteSpace: "nowrap",
+              }}
+            >
+              iFathom
+            </Typography>
+          </Box>
 
-        {/* ── Desktop Nav ── */}
-        <Box
-          sx={{
-            display: { xs: "none", lg: "flex" },
-            alignItems: "center",
-            flexWrap: "nowrap",
-            gap: 0.5,
-            overflowX: "auto",
-            "&::-webkit-scrollbar": { display: "none" },
-          }}
-        >
-          {navLinks.map((link) => {
-            const active = location.pathname === link.to;
-            return (
-              <Box
-                key={link.to}
-                component={Link}
-                to={link.to}
-                sx={{
-                  display: "inline-flex",
-                  alignItems: "center",
-                  px: 1.4,
-                  py: 0.55,
-                  borderRadius: "4px",
-                  border: active ? "none" : "1px solid #b0b8c4",
-                  backgroundColor: active ? colors.navy : "transparent",
-                  color: active ? "#ffffff" : colors.darkText,
-                  textDecoration: "none",
-                  fontSize: "0.8rem",
-                  fontWeight: active ? 600 : 400,
-                  whiteSpace: "nowrap",
-                  transition: "background-color 0.15s, color 0.15s",
-                  "&:hover": {
-                    backgroundColor: active ? colors.navyLight : "#e2e6ea",
-                    color: active ? "#ffffff" : colors.darkText,
-                  },
-                }}
-              >
-                {link.label}
-              </Box>
-            );
-          })}
-        </Box>
-
-        {/* ── Mobile hamburger ── */}
-        <Box sx={{ display: { xs: "flex", lg: "none" }, ml: "auto" }}>
-          <IconButton
-            onClick={toggleDrawer}
-            sx={{ color: colors.darkText }}
-            aria-label="open menu"
+          {/* ── Desktop nav buttons ── */}
+          <Box
+            sx={{
+              display: { xs: "none", lg: "flex" },
+              alignItems: "center",
+              flexWrap: "nowrap",
+              gap: "6px",
+            }}
           >
-            {mobileOpen ? <CloseIcon /> : <MenuIcon />}
-          </IconButton>
+            {navLinks.map((link) => {
+              const active = location.pathname === link.to;
+              return (
+                <Box
+                  key={link.to}
+                  component={Link}
+                  to={link.to}
+                  sx={{
+                    display: "inline-flex",
+                    alignItems: "center",
+                    px: "18px",
+                    py: "9px",
+                    borderRadius: "4px",
+                    backgroundColor: active ? "#1a2a4a" : "#ffffff",
+                    color: active ? "#ffffff" : "#1a1a2e",
+                    textDecoration: "none",
+                    fontSize: "0.92rem",
+                    fontWeight: active ? 600 : 400,
+                    whiteSpace: "nowrap",
+                    lineHeight: 1.4,
+                    transition: "background-color 0.15s, color 0.15s",
+                    "&:hover": {
+                      backgroundColor: active ? "#243559" : "#e8ecf0",
+                      color: active ? "#ffffff" : "#1a1a2e",
+                    },
+                  }}
+                >
+                  {link.label}
+                </Box>
+              );
+            })}
+          </Box>
+
+          {/* ── Mobile hamburger ── */}
+          <Box sx={{ display: { xs: "flex", lg: "none" }, ml: 1 }}>
+            <IconButton
+              onClick={toggleDrawer}
+              sx={{ color: "#1a1a2e", p: "4px" }}
+              aria-label="open menu"
+            >
+              {mobileOpen ? <CloseIcon /> : <MenuIcon />}
+            </IconButton>
+          </Box>
         </Box>
-      </Toolbar>
+      </Box>
+
+      {/* Spacer so page content doesn't sit under the fixed navbar */}
+      <Box sx={{ height: { xs: "52px", lg: "56px" } }} />
 
       {/* ── Mobile Drawer ── */}
       <Drawer
@@ -153,7 +173,7 @@ export default function Navbar() {
         PaperProps={{
           sx: {
             width: { xs: "80%", sm: "44%" },
-            backgroundColor: "#f0f2f5",
+            backgroundColor: "#f4f6f9",
           },
         }}
       >
@@ -172,7 +192,7 @@ export default function Navbar() {
             component={Link}
             to="/"
             onClick={toggleDrawer}
-            sx={{ display: "flex", alignItems: "center", gap: 0.8, textDecoration: "none" }}
+            sx={{ display: "flex", alignItems: "center", gap: "6px", textDecoration: "none" }}
           >
             <Box
               component="img"
@@ -182,16 +202,20 @@ export default function Navbar() {
             />
             <Typography
               sx={{
-                color: colors.darkText,
-                fontWeight: 800,
-                fontSize: "1.05rem",
+                color: "#1a1a2e",
+                fontWeight: 700,
+                fontSize: "1rem",
                 fontFamily: "'Poppins', sans-serif",
               }}
             >
               iFathom
             </Typography>
           </Box>
-          <IconButton onClick={toggleDrawer} sx={{ color: colors.darkText }} aria-label="close menu">
+          <IconButton
+            onClick={toggleDrawer}
+            sx={{ color: "#1a1a2e" }}
+            aria-label="close menu"
+          >
             <CloseIcon />
           </IconButton>
         </Box>
@@ -208,19 +232,18 @@ export default function Navbar() {
                   onClick={toggleDrawer}
                   sx={{
                     py: 1.2,
-                    px: 3,
+                    px: 2.5,
                     mx: 1.5,
                     my: 0.3,
                     borderRadius: "4px",
-                    border: active ? "none" : "1px solid #b0b8c4",
-                    backgroundColor: active ? colors.navy : "transparent",
+                    backgroundColor: active ? "#1a2a4a" : "#ffffff",
                   }}
                 >
                   <ListItemText
                     primary={link.label}
                     primaryTypographyProps={{
                       sx: {
-                        color: active ? "#ffffff" : colors.darkText,
+                        color: active ? "#ffffff" : "#1a1a2e",
                         fontWeight: active ? 600 : 400,
                         fontSize: "0.9rem",
                       },
@@ -232,6 +255,6 @@ export default function Navbar() {
           })}
         </List>
       </Drawer>
-    </AppBar>
+    </>
   );
 }
