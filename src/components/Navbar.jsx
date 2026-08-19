@@ -62,6 +62,7 @@ export default function Navbar() {
             borderRadius: "6px",
             px: "20px",
             py: "12px",
+            mt:2.5,
             gap: 0,
             maxWidth: "100%",
             boxShadow: "0 2px 8px rgba(0,0,0,0.14)",
@@ -163,7 +164,15 @@ export default function Navbar() {
       </Box>
 
       {/* Spacer so page content doesn't sit under the fixed navbar */}
-      <Box sx={{ height: { xs: "52px", lg: "56px" } }} />
+<Box
+  sx={{
+    height: {
+      xs: "19px",
+      sm: "21px",
+      lg: "20px",
+    },
+  }}
+/>
 
       {/* ── Mobile Drawer ── */}
       <Drawer
