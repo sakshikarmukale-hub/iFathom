@@ -4,6 +4,9 @@ import CssBaseline from "@mui/material/CssBaseline";
 import Navbar from "./components/Navbar.jsx";
 import Footer from "./components/Footer.jsx";
 import AppRoutes from "./Routes/AppRoutes.jsx";
+import "@fontsource/oswald/500.css";
+import "@fontsource/oswald/600.css";
+import "@fontsource/oswald/700.css";
 
 const theme = createTheme({
   typography: {

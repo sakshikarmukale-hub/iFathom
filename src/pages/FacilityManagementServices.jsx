@@ -54,7 +54,7 @@ export default function FacilityManagementServices() {
         sx={{
           position: "relative",
           width: "100%",
-          height: { xs: 220, sm: 280, md: 340 },
+          height: { xs: 220, sm: 380, md: 480 },
           overflow: "hidden",
         }}
       >
@@ -72,50 +72,57 @@ export default function FacilityManagementServices() {
         />
         {/* Dark gradient overlay */}
         <Box
-          sx={{
-            position: "absolute",
-            inset: 0,
-            background:
-              "linear-gradient(to top, rgba(0,0,0,0.78) 0%, rgba(0,0,0,0.35) 55%, rgba(0,0,0,0.12) 100%)",
-          }}
-        />
-        {/* Text — bottom-left */}
-        <Box
-          sx={{
-            position: "absolute",
-            bottom: { xs: 20, md: 32 },
-            left: { xs: 20, sm: 40, md: 60 },
-            maxWidth: { xs: "90%", md: 600 },
-          }}
-        >
-          <Typography
-            sx={{
-              color: colors.white,
-              fontWeight: 800,
-              fontSize: { xs: "1.3rem", sm: "1.7rem", md: "2.4rem" },
-              fontFamily: "'Poppins', sans-serif",
-              lineHeight: 1.15,
-              mb: 1,
-              textShadow: "0 2px 10px rgba(0,0,0,0.5)",
-            }}
-          >
-            Facility Management Services
-          </Typography>
-          <Typography
-            sx={{
-              color: "rgba(255,255,255,0.88)",
-              fontSize: { xs: "0.75rem", sm: "0.82rem", md: "0.88rem" },
-              lineHeight: 1.65,
-              textShadow: "0 1px 6px rgba(0,0,0,0.5)",
-            }}
-          >
-            We provide comprehensive IT management services, including remote
-            troubleshooting, software upgrades, asset tracking, infrastructure
-            maintenance, and data security, ensuring seamless operations and
-            optimal performance for your organization.
-          </Typography>
-        </Box>
-      </Box>
+  sx={{
+    position: "absolute",
+    inset: 0,
+    background:
+      "linear-gradient(to top, rgba(45, 78, 101, 0.82) 0%, rgba(45, 78, 101, 0.55) 55%, rgba(20, 40, 55, 0.25) 100%)",
+  }}
+/>
+       {/* Text — center */}
+<Box
+  sx={{
+    position: "absolute",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
+    width: { xs: "90%", sm: "80%", md: "70%" },
+    maxWidth: 900,
+    textAlign: "center",
+    pb: { xs: 2, md: 4 },
+  }}
+>
+  <Typography
+    sx={{
+      color: colors.white,
+      fontWeight: 800,
+      fontSize: { xs: "1.3rem", sm: "1.7rem", md: "3.5rem" },
+      fontFamily: "'Poppins', sans-serif",
+      lineHeight: 1.15,
+      mb: 1.5,
+      mt: 36,
+      textShadow: "0 2px 10px rgba(0,0,0,0.5)",
+    }}
+  >
+    Facility Management Services
+  </Typography>
+<Typography
+  sx={{
+    color: "rgba(255,255,255,0.88)",
+    fontSize: { xs: "0.75rem", sm: "0.82rem", md: "1rem" },
+    lineHeight: 1.65,
+    textAlign: "left",
+    textShadow: "0 1px 6px rgba(0,0,0,0.5)",
+    mb: 4,
+  }}
+>
+  We provide comprehensive IT management services, including remote
+  troubleshooting, software upgrades, asset tracking, infrastructure
+  maintenance, and data security, ensuring seamless operations and
+  optimal performance for your organization.
+</Typography>
+</Box>
+</Box>
 
       {/* ── Service Cards ── */}
       <Box sx={{ backgroundColor: colors.white, py: { xs: 5, md: 6 } }}>
@@ -155,9 +162,9 @@ export default function FacilityManagementServices() {
                   <Box sx={{ px: 2, pt: 1.5, pb: 2, flexGrow: 1 }}>
                     <Typography
                       sx={{
-                        color: colors.accent,
-                        fontWeight: 700,
-                        fontSize: { xs: "0.82rem", md: "0.88rem" },
+                        color: "#000",
+                        fontWeight: 800,
+                        fontSize: { xs: "0.88rem", md: "1.1rem" },
                         mb: 0.75,
                         lineHeight: 1.35,
                         fontFamily: "'Poppins', sans-serif",
@@ -183,36 +190,51 @@ export default function FacilityManagementServices() {
       </Box>
 
       {/* ── Satisfaction Guarantee ── */}
-      <Box sx={{ backgroundColor: "#b0b8c5", py: { xs: 5, md: 7 } }}>
-        <Container maxWidth="md">
-          <Typography
-            align="center"
-            sx={{
-              color: colors.navy,
-              fontWeight: 800,
-              fontSize: { xs: "1.3rem", md: "1.6rem" },
-              fontFamily: "'Poppins', sans-serif",
-              mb: 1.5,
-            }}
-          >
-            Satisfaction Guarantee
-          </Typography>
-          <Typography
-            align="center"
-            sx={{
-              color: colors.navy,
-              fontSize: { xs: "0.85rem", md: "0.92rem" },
-              lineHeight: 1.75,
-              maxWidth: 540,
-              mx: "auto",
-            }}
-          >
-            iFathom guarantees reliable, high-quality IT solutions tailored to
-            your business needs, ensuring satisfaction through expert service
-            and support.
-          </Typography>
-        </Container>
-      </Box>
+     <Box
+  sx={{
+    backgroundColor: "#6F7E8C",
+    py: { xs: 4, md: 5 },
+    px: { xs: 2, md: 5 },
+  }}
+>
+  <Container maxWidth="lg">
+    <Box
+      sx={{
+        backgroundColor: "#D3D8DE",
+        borderRadius: "10px",
+        py: { xs: 4, md: 6 },
+        px: { xs: 2, md: 5 },
+        textAlign: "center",
+      }}
+    >
+      <Typography
+        sx={{
+          color: colors.navy,
+          fontWeight: 800,
+          fontSize: { xs: "1.4rem", sm: "1.8rem", md: "2.5rem" },
+          fontFamily: "'Poppins', sans-serif",
+          mb: 1.5,
+        }}
+      >
+        Satisfaction Guarantee
+      </Typography>
+
+      <Typography
+        sx={{
+          color: colors.navy,
+          fontSize: { xs: "0.85rem", sm: "0.95rem", md: "1rem" },
+          lineHeight: 1.75,
+          maxWidth: 850,
+          mx: "auto",
+        }}
+      >
+        iFathom guarantees reliable, high-quality IT solutions tailored to
+        your business needs, ensuring satisfaction through expert service
+        and support.
+      </Typography>
+    </Box>
+  </Container>
+</Box>
     </Box>
   );
 }

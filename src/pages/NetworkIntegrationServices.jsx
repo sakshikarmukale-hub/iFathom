@@ -37,7 +37,7 @@ export default function NetworkIntegrationServices() {
         sx={{
           position: "relative",
           width: "100%",
-          height: { xs: 220, sm: 280, md: 340 },
+          height: { xs: 220, sm: 280, md: 480 },
           overflow: "hidden",
         }}
       >
@@ -53,42 +53,50 @@ export default function NetworkIntegrationServices() {
             display: "block",
           }}
         />
-        {/* Dark gradient overlay */}
+
+        {/* Dark blue overlay */}
         <Box
           sx={{
             position: "absolute",
             inset: 0,
             background:
-              "linear-gradient(to top, rgba(0,0,0,0.78) 0%, rgba(0,0,0,0.35) 55%, rgba(0,0,0,0.12) 100%)",
+              "linear-gradient(to top, rgba(30, 65, 82, 0.90) 0%, rgba(30, 65, 82, 0.65) 55%, rgba(10, 35, 48, 0.30) 100%)",
           }}
         />
-        {/* Text — bottom-left */}
+
+        {/* Text — center-left */}
         <Box
           sx={{
             position: "absolute",
-            bottom: { xs: 20, md: 32 },
-            left: { xs: 20, sm: 40, md: 60 },
-            maxWidth: { xs: "90%", md: 580 },
+            top: "58%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
+            width: { xs: "90%", sm: "80%", md: "65%" },
+            maxWidth: 1100,
           }}
         >
           <Typography
             sx={{
               color: colors.white,
               fontWeight: 800,
-              fontSize: { xs: "1.4rem", sm: "1.8rem", md: "2.4rem" },
+              fontSize: { xs: "1.4rem", sm: "1.8rem", md: "3.5rem" },
               fontFamily: "'Poppins', sans-serif",
               lineHeight: 1.15,
-              mb: 1,
+              mb: 1.5,
+              textAlign: "left",
+              mt: 25,
               textShadow: "0 2px 10px rgba(0,0,0,0.5)",
             }}
           >
             Network Integration Services
           </Typography>
+
           <Typography
             sx={{
               color: "rgba(255,255,255,0.88)",
-              fontSize: { xs: "0.75rem", sm: "0.82rem", md: "0.88rem" },
+              fontSize: { xs: "0.75rem", sm: "0.82rem", md: "1rem" },
               lineHeight: 1.65,
+              textAlign: "left",
               textShadow: "0 1px 6px rgba(0,0,0,0.5)",
             }}
           >
@@ -102,7 +110,14 @@ export default function NetworkIntegrationServices() {
 
       {/* ── Service Cards ── */}
       <Box sx={{ backgroundColor: colors.white, py: { xs: 5, md: 6 } }}>
-        <Container maxWidth="lg">
+        <Container
+          maxWidth={false}
+          sx={{
+            width: "90%",
+            maxWidth: "900px",
+            mx: "auto",
+          }}
+        >
           <Grid container spacing={2}>
             {services.map((s) => (
               <Grid item xs={12} sm={6} md={4} key={s.title}>
@@ -138,9 +153,9 @@ export default function NetworkIntegrationServices() {
                   <Box sx={{ px: 2, pt: 1.5, pb: 2, flexGrow: 1 }}>
                     <Typography
                       sx={{
-                        color: colors.accent,
+                        color: "#000",
                         fontWeight: 700,
-                        fontSize: { xs: "0.82rem", md: "0.88rem" },
+                        fontSize: { xs: "0.88rem", md: "1.1rem" },
                         mb: 0.75,
                         lineHeight: 1.35,
                         fontFamily: "'Poppins', sans-serif",
@@ -148,6 +163,7 @@ export default function NetworkIntegrationServices() {
                     >
                       {s.title}
                     </Typography>
+
                     <Typography
                       sx={{
                         color: colors.grayText,
@@ -166,36 +182,59 @@ export default function NetworkIntegrationServices() {
       </Box>
 
       {/* ── Satisfaction Guarantee ── */}
-      <Box sx={{ backgroundColor: "#b0b8c5", py: { xs: 5, md: 7 } }}>
-        <Container maxWidth="md">
-          <Typography
-            align="center"
-            sx={{
-              color: colors.navy,
-              fontWeight: 800,
-              fontSize: { xs: "1.3rem", md: "1.6rem" },
-              fontFamily: "'Poppins', sans-serif",
-              mb: 1.5,
-            }}
-          >
-            Satisfaction Guarantee
-          </Typography>
-          <Typography
-            align="center"
-            sx={{
-              color: colors.navy,
-              fontSize: { xs: "0.85rem", md: "0.92rem" },
-              lineHeight: 1.75,
-              maxWidth: 540,
-              mx: "auto",
-            }}
-          >
-            iFathom guarantees reliable, high-quality IT solutions tailored to
-            your business needs, ensuring satisfaction through expert service
-            and support.
-          </Typography>
-        </Container>
-      </Box>
+     <Box
+  sx={{
+    backgroundColor: "#6F7E8C",
+    py: { xs: 3, md: 5 },
+    px: { xs: 2, md: 5 },
+  }}
+>
+  <Container
+    maxWidth={false}
+    sx={{
+      width: { xs: "95%", sm: "90%", md: "90%" },
+      maxWidth: "1700px",
+      mx: "auto",
+      p: 0,
+    }}
+  >
+    <Box
+      sx={{
+        backgroundColor: "#D3D8DE",
+        borderRadius: "10px",
+        py: { xs: 4, md: 6 },
+        px: { xs: 2, md: 5 },
+        textAlign: "center",
+      }}
+    >
+      <Typography
+        sx={{
+          color: colors.navy,
+          fontWeight: 800,
+          fontSize: { xs: "1.5rem", sm: "2rem", md: "2.5rem" },
+          fontFamily: "'Poppins', sans-serif",
+          mb: 1.5,
+        }}
+      >
+        Satisfaction Guarantee
+      </Typography>
+
+      <Typography
+        sx={{
+          color: colors.navy,
+          fontSize: { xs: "0.85rem", sm: "0.95rem", md: "1rem" },
+          lineHeight: 1.75,
+          maxWidth: 850,
+          mx: "auto",
+        }}
+      >
+        iFathom guarantees reliable, high-quality IT solutions tailored to
+        your business needs, ensuring satisfaction through expert service
+        and support.
+      </Typography>
+    </Box>
+  </Container>
+</Box>
     </Box>
   );
 }
