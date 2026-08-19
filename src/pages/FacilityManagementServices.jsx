@@ -1,45 +1,45 @@
 import React from "react";
 import { Box, Container, Grid, Typography } from "@mui/material";
 import colors from "../assets/colors";
+import facilityHero from "../assets/facility-hero.jpg";
+import facilityDesktopAdmin from "../assets/facility-desktop-admin.png";
+import facilityRemoteTroubleshoot from "../assets/facility-remote-troubleshoot.png";
+import serviceDeployment from "../assets/service-deployment.png";
+import facilityInventory from "../assets/facility-inventory.png";
+import facilityInfraMgmt from "../assets/facility-infra-mgmt.png";
+import servicesHero from "../assets/services-hero.png";
 
-const HERO_IMG =
-  "https://static.wixstatic.com/media/f01754_191ece38321a4f7f8da22a4a6650903a~mv2.jpg";
+const HERO_IMG = facilityHero;
 
 const services = [
   {
-    image:
-      "https://static.wixstatic.com/media/f01754_b9bbc8985f504d67aafe23990d41c170~mv2.png",
+    image: facilityDesktopAdmin,
     title: "Desktop Administration & Support",
     description: "Managing IT assets and providing desktop support.",
   },
   {
-    image:
-      "https://static.wixstatic.com/media/f01754_cb8c2b904c0c45669b20f6107d125095~mv2.png",
+    image: facilityRemoteTroubleshoot,
     title: "Remote Troubleshooting",
     description: "Resolving desktop and server issues via remote control.",
   },
   {
-    image:
-      "https://static.wixstatic.com/media/f01754_af8ccf7df3814a2fb13e61dad8f2c815~mv2.png",
+    image: serviceDeployment,
     title: "Software Installation & Upgrades",
     description: "Deploying and updating software remotely.",
   },
   {
-    image:
-      "https://static.wixstatic.com/media/f01754_a6be702eff47413591df42efb0fa7905~mv2.png",
+    image: facilityInventory,
     title: "Hardware & Software Inventory Management",
     description:
       "Maintaining accurate records of IT assets for tracking, and optimization.",
   },
   {
-    image:
-      "https://static.wixstatic.com/media/f01754_e07852d783cf4f0691348d2f556c76e7~mv2.png",
+    image: facilityInfraMgmt,
     title: "Technology Infrastructure Management",
     description: "Overseeing hardware, software, and network systems.",
   },
   {
-    image:
-      "https://static.wixstatic.com/media/f01754_20d92766891246d1a72aef8b8fa5dd1e~mv2.png",
+    image: servicesHero,
     title: "Data Security & Recovery",
     description:
       "Ensuring virus protection, backups, system recovery, and data security.",

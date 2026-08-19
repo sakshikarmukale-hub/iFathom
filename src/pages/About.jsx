@@ -8,24 +8,27 @@ import {
   IconButton,
 } from "@mui/material";
 import colors from "../assets/colors";
+import aboutHero from "../assets/about-hero.jpg";
+import socialLinkedin from "../assets/social-linkedin.png";
+import socialFacebook from "../assets/social-facebook.png";
+import socialInstagram from "../assets/social-instagram.png";
 
-const HERO_IMG =
-  "https://static.wixstatic.com/media/f01754_71c8a4b5c548461d951c80dfb376e93cf000.jpg";
+const HERO_IMG = aboutHero;
 
 const socials = [
   {
     name: "LinkedIn",
-    icon: "https://static.wixstatic.com/media/11062b_b5690303a8ff470e9b1c03a24aff140b~mv2.png",
+    icon: socialLinkedin,
     href: "https://www.linkedin.com/company/ifathom",
   },
   {
     name: "Facebook",
-    icon: "https://static.wixstatic.com/media/11062b_f4e3e7f537ff4762a1914aa14e3e36b9~mv2.png",
+    icon: socialFacebook,
     href: "https://www.facebook.com/ifathom",
   },
   {
     name: "Instagram",
-    icon: "https://static.wixstatic.com/media/11062b_cef3b719166a4815b446d4dcfcb6120d~mv2.png",
+    icon: socialInstagram,
     href: "#",
   },
 ];

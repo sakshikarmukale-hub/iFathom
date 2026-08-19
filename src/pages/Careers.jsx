@@ -12,9 +12,9 @@ import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 import TelegramIcon from "@mui/icons-material/Telegram";
 import colors from "../assets/colors";
+import careersHero from "../assets/careers-hero.jpg";
 
-const HERO_BG =
-  "https://static.wixstatic.com/media/nsplsh_22287e88d6554c41934e08569684e7ee~mv2.jpg";
+const HERO_BG = careersHero;
 
 const jobs = [
   {
@@ -70,7 +70,7 @@ export default function Careers() {
       <Box
         sx={{
           backgroundColor: colors.navyDark,
-          backgroundImage: `linear-gradient(120deg, rgba(6,15,30,0.94) 0%, rgba(10,31,61,0.85) 60%, rgba(10,31,61,0.6) 100%), url('${HERO_BG}')`,
+          backgroundImage: `linear-gradient(120deg, rgba(6,15,30,0.94) 0%, rgba(10,31,61,0.85) 60%, rgba(10,31,61,0.6) 100%), url(${HERO_BG})`,
           backgroundSize: "cover",
           backgroundPosition: "center top",
           py: { xs: 10, md: 14 },

@@ -1,44 +1,43 @@
 import React from "react";
 import { Box, Container, Grid, Typography, Button } from "@mui/material";
 import colors from "../assets/colors";
+import productsHero from "../assets/products-hero.jpg";
+import productDesktops from "../assets/product-desktops.png";
+import productServers from "../assets/product-servers.jpg";
+import productLaptops from "../assets/product-laptops.png";
+import productPrinters from "../assets/product-printers.png";
+import productVideoconf from "../assets/product-videoconf.jpg";
 
-const HERO_IMG =
-  "https://static.wixstatic.com/media/f01754_6d7ab714266f4cd88ee5c0a952998e4e~mv2.jpg";
+const HERO_IMG = productsHero;
 
 const products = [
   {
-    image:
-      "https://static.wixstatic.com/media/95afa1_9ca638d84430451b9ce0223cf6f2281f~mv2.png",
+    image: productDesktops,
     title: "DESKTOPS",
     brands: "Acer, Apple, Dell, HP, Lenovo",
   },
   {
-    image:
-      "https://static.wixstatic.com/media/24a129_5f9c727915b34bcea248b1aae69bd83d~mv2.jpg",
+    image: productServers,
     title: "SERVERS",
     brands: "Dell, HP, Lenovo",
   },
   {
-    image:
-      "https://static.wixstatic.com/media/95afa1_53f96296901d484885be08d3eceabef0~mv2.png",
+    image: productLaptops,
     title: "LAPTOPS",
     brands: "Acer, Apple, Dell, HP, Lenovo",
   },
   {
-    image:
-      "https://static.wixstatic.com/media/95afa1_6f71738bda154d09ba312add75dddd51~mv2.png",
+    image: productPrinters,
     title: "PRINTERS",
     brands: "Canon, EPSON, HP, Xerox",
   },
   {
-    image:
-      "https://static.wixstatic.com/media/24a129_5f9c727915b34bcea248b1aae69bd83d~mv2.jpg",
+    image: productServers,
     title: "NETWORKING",
     brands: "Aruba, D Link, Cisco, Linksys",
   },
   {
-    image:
-      "https://static.wixstatic.com/media/95afa1_1fd426b170b745c2b73c71cd3f0f8b8a~mv2.jpg",
+    image: productVideoconf,
     title: "VIDEO CONFERENCING",
     brands: "CISCO, Logitech, Polycom, Vu",
   },

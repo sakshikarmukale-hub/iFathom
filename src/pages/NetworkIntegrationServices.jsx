@@ -1,28 +1,28 @@
 import React from "react";
 import { Box, Container, Grid, Typography } from "@mui/material";
 import colors from "../assets/colors";
+import networkHero from "../assets/network-hero.jpg";
+import networkFirewall from "../assets/network-firewall.png";
+import networkMail from "../assets/network-mail.png";
+import networkRemote from "../assets/network-remote.jpg";
 
-const HERO_IMG =
-  "https://static.wixstatic.com/media/f01754_8afee2a565684f5b9e3ee904154cd621~mv2.jpg";
+const HERO_IMG = networkHero;
 
 const services = [
   {
-    image:
-      "https://static.wixstatic.com/media/f01754_e8b0b4b6aa004c2ca68508d7b82f6df4~mv2.png",
+    image: networkFirewall,
     title: "Firewall Solutions",
     description:
       "Implementing multi-layered security to protect networks from unauthorized access, with real-time alerts for intrusion detection and prevention.",
   },
   {
-    image:
-      "https://static.wixstatic.com/media/f01754_90f38c77568147abb8dc807eed2ca923~mv2.png",
+    image: networkMail,
     title: "Mail & Messaging Solutions",
     description:
       "Designing, deploying, and migrating mail and messaging systems, including MS Exchange and intranet solutions, to optimize communication.",
   },
   {
-    image:
-      "https://static.wixstatic.com/media/f01754_bc797955301944dbb18127993c8497fc~mv2.jpg",
+    image: networkRemote,
     title: "Remote Access Services",
     description:
       "Enabling secure remote connectivity for mobile users and remote locations through access servers, routers, and built-in OS solutions.",

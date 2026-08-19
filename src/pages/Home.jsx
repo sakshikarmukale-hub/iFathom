@@ -9,30 +9,30 @@ import {
 } from "@mui/material";
 import CallIcon from "@mui/icons-material/Call";
 import colors from "../assets/colors";
+import heroBg from "../assets/home-hero.jpg";
+import expertiseProgramming from "../assets/home-expertise-programming.png";
+import expertiseServices from "../assets/home-expertise-services.png";
+import expertiseFms from "../assets/home-expertise-fms.png";
 
-const HERO_BG =
-  "https://static.wixstatic.com/media/f01754_fc415d014cfa41ae9809d8bcbe791d92f000.jpg";
+const HERO_BG = heroBg;
 
 const expertise = [
   {
-    image:
-      "https://static.wixstatic.com/media/f01754_30e5ee7293644d4e972872c717df0ee2~mv2.png",
+    image: expertiseProgramming,
     title: "NEW AGE PROGRAMMING",
     description:
       "From scalable web applications to enterprise-grade software, our experts craft innovative future-ready technologies.",
     to: "/products",
   },
   {
-    image:
-      "https://static.wixstatic.com/media/f01754_4220c13c10d94bd28a93c4f07dd96a7a~mv2.png",
+    image: expertiseServices,
     title: "SERVICES",
     description:
       "We offer comprehensive IT support, including desktop management, remote troubleshooting, and technology management for smooth operations.",
     to: "/services",
   },
   {
-    image:
-      "https://static.wixstatic.com/media/f01754_726d8dbce99845af8e986636d7bdbb6a~mv2.png",
+    image: expertiseFms,
     title: "FMS/ NETWORK SERVICES",
     description:
       "Our FMS and networking services include secure remote access, firewall protection, and network optimization for enhanced connectivity and security.",

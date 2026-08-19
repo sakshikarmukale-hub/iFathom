@@ -1,48 +1,48 @@
 import React from "react";
 import { Box, Container, Grid, Typography } from "@mui/material";
 import colors from "../assets/colors";
+import servicesHero from "../assets/services-hero.png";
+import serviceInfrastructure from "../assets/service-infrastructure.png";
+import serviceDeployment from "../assets/service-deployment.png";
+import serviceSecurity from "../assets/service-security.png";
+import serviceEnterprise from "../assets/service-enterprise.jpg";
+import serviceTraining from "../assets/service-training.png";
+import serviceCloud from "../assets/service-cloud.png";
 
-const HERO_IMG =
-  "https://static.wixstatic.com/media/f01754_20d92766891246d1a72aef8b8fa5dd1e~mv2.png";
+const HERO_IMG = servicesHero;
 
 const services = [
   {
-    image:
-      "https://static.wixstatic.com/media/f01754_36dd1c4f24e84b0dbf67a673312280ac~mv2.png",
+    image: serviceInfrastructure,
     title: "IT Infrastructure Solutions",
     description:
       "Providing cost-effective hardware, software, and network management.",
   },
   {
-    image:
-      "https://static.wixstatic.com/media/f01754_af8ccf7df3814a2fb13e61dad8f2c815~mv2.png",
+    image: serviceDeployment,
     title: "System Deployment & Upgrades",
     description: "Managing IT rollouts, migrations, and version upgrades.",
   },
   {
-    image:
-      "https://static.wixstatic.com/media/f01754_4522483e80aa4d9eb7e36d0811e1f303~mv2.png",
+    image: serviceSecurity,
     title: "Security & Disaster Recovery",
     description:
       "Implementing cybersecurity measures and recovery strategies.",
   },
   {
-    image:
-      "https://static.wixstatic.com/media/nsplsh_4ce9ba90b904431f84f9ee4e8eaf9fa1~mv2.jpg",
+    image: serviceEnterprise,
     title: "Enterprise IT Support",
     description:
       "Delivering end-to-end technical support, troubleshooting, and system maintenance.",
   },
   {
-    image:
-      "https://static.wixstatic.com/media/f01754_7cfb477825d443bdae7b8c008e847bd2~mv2.png",
+    image: serviceTraining,
     title: "IT Training & Skilled Resources",
     description:
       "Expertise in Linux, Windows, Microsoft Exchange, and enterprise management.",
   },
   {
-    image:
-      "https://static.wixstatic.com/media/f01754_7290b2238d54452c92cb92674d209948~mv2.png",
+    image: serviceCloud,
     title: "Cloud & Messaging Solutions",
     description:
       "Expertise in Linux, Windows, Microsoft Exchange, and enterprise management.",
