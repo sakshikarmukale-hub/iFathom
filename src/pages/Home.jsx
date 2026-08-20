@@ -41,33 +41,27 @@ const expertise = [
 ];
 
 export default function Home() {
-
-  const aboutRef = useRef(null); // wraps the whole About section
-  const dotRef = useRef(null);   // the orange dot — moved via DOM in rAF, not React state
+  /* ── About Us: animated dot on scroll line ── */
+  const aboutRef = useRef(null);
+  const dotRef = useRef(null);
 
   useEffect(() => {
-    let target = 0;   // 0-100, where the dot SHOULD be based on scroll
-    let current = 0;  // 0-100, where the dot IS right now (eased toward target)
+    let target = 0;
+    let current = 0;
     let rafId;
 
     const computeTarget = () => {
       if (!aboutRef.current) return;
-
       const rect = aboutRef.current.getBoundingClientRect();
       const windowHeight = window.innerHeight;
-
-      // Progress starts when About section enters viewport, ends when it leaves
       const start = windowHeight;
       const end = -rect.height;
-
       let progress = (start - rect.top) / (start - end);
       progress = Math.max(0, Math.min(1, progress));
-
       target = progress * 100;
     };
 
     const animate = () => {
-      // ease current toward target (lerp) — this is what makes the motion smooth
       current += (target - current) * 0.08;
       if (dotRef.current) {
         dotRef.current.style.left = `${current}%`;
@@ -76,7 +70,6 @@ export default function Home() {
     };
 
     const handleScroll = () => computeTarget();
-
     computeTarget();
     window.addEventListener("scroll", handleScroll, { passive: true });
     window.addEventListener("resize", handleScroll);
@@ -89,111 +82,105 @@ export default function Home() {
     };
   }, []);
 
-  //Expert Section
+  /* ── Our Expertise: animated dot on scroll line ── */
   const [dotPosition, setDotPosition] = useState(0);
 
   useEffect(() => {
-  const handleScroll = () => {
-    const expertiseSection = document.getElementById("our-expertise");
+    const handleScroll = () => {
+      const expertiseSection = document.getElementById("our-expertise");
+      if (!expertiseSection) return;
+      const rect = expertiseSection.getBoundingClientRect();
+      const windowHeight = window.innerHeight;
+      const start = windowHeight;
+      const end = -rect.height;
+      let progress = (start - rect.top) / (start - end);
+      progress = Math.max(0, Math.min(1, progress));
+      setDotPosition(progress * 100);
+    };
 
-    if (!expertiseSection) return;
-
-    const rect = expertiseSection.getBoundingClientRect();
-    const windowHeight = window.innerHeight;
-
-    const start = windowHeight;
-    const end = -rect.height;
-
-    let progress = (start - rect.top) / (start - end);
-
-    progress = Math.max(0, Math.min(1, progress));
-
-    setDotPosition(progress * 100);
-  };
-
-  handleScroll();
-
-  window.addEventListener("scroll", handleScroll, { passive: true });
-  window.addEventListener("resize", handleScroll);
-
-  return () => {
-    window.removeEventListener("scroll", handleScroll);
-    window.removeEventListener("resize", handleScroll);
-  };
-}, []);
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    window.addEventListener("resize", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", handleScroll);
+    };
+  }, []);
 
   return (
     <Box>
-      {/* ── Hero ── */}
+
+      {/* ════════════════════════════════════════════
+          HERO SECTION
+          ════════════════════════════════════════════ */}
       <Box
-  sx={{
-    backgroundImage: `url('${HERO_BG}')`,
-    backgroundSize: "cover",
-    backgroundPosition: "center",
-
-    minHeight: {
-      xs: 600,   // mobile
-      sm: 700,   // tablet
-      md: 800,   // desktop
-    },
-
-    display: "flex",
-    alignItems: "center",
-    py: {
-      xs: 7,
-      sm: 9,
-      md: 12,
-    },
-  }}
->
+        sx={{
+          backgroundImage: `url('${HERO_BG}')`,
+          backgroundSize: "cover",
+          backgroundPosition: "center top",
+          minHeight: { xs: 560, sm: 660, md: 780 },
+          display: "flex",
+          alignItems: "center",
+          py: { xs: 8, sm: 10, md: 14 },
+        }}
+      >
         <Container maxWidth="lg">
           <Box
             sx={{
-    maxWidth: { xs: "100%", sm: 440 },
-    ml: { xs: 0, sm: 6, md: 12, lg: 16 },
-  }}
->
+              maxWidth: { xs: "100%", sm: 460, md: 520 },
+              ml: { xs: 0, sm: 4, md: 8, lg: 12 },
+            }}
+          >
+            {/* Sub-heading: FOR BUSINESS GROWTH */}
             <Typography
               sx={{
                 color: colors.white,
-                fontWeight: 800,
-                fontSize: { xs: "1.6rem", sm: "2rem", md: "2.4rem" },
-                lineHeight: 1.15,
-                mb: 1,
-                textTransform: "uppercase",
-                fontFamily: "'Poppins', sans-serif",
-                textShadow: "0 2px 8px rgba(0,0,0,0.4)",
-              }}
-            >
-              SMART IT SOLUTIONS
-            </Typography>
-            <Typography
-              sx={{
-                color: colors.white,
+                fontFamily: "'Oswald', sans-serif",
                 fontWeight: 500,
-                fontSize: { xs: "1rem", sm: "1.1rem", md: "1.25rem" },
-                lineHeight: 1.3,
-                mb: 2.5,
+                fontSize: { xs: "0.85rem", sm: "0.9rem", md: "1rem" },
+                letterSpacing: "3px",
                 textTransform: "uppercase",
-                letterSpacing: 0.5,
-                textShadow: "0 2px 8px rgba(0,0,0,0.4)",
+                mb: 1,
+                textShadow: "0 1px 4px rgba(0,0,0,0.5)",
               }}
             >
               FOR BUSINESS GROWTH
             </Typography>
+
+            {/* Main heading: SMART IT SOLUTIONS */}
             <Typography
               sx={{
-                color: "rgba(255,255,255,0.9)",
-                fontSize: { xs: "0.82rem", sm: "0.88rem" },
-                lineHeight: 1.65,
-                mb: 3.5,
-                maxWidth: 380,
+                color: colors.white,
+                fontFamily: "'Oswald', sans-serif",
+                fontWeight: 700,
+                fontSize: { xs: "2.4rem", sm: "3rem", md: "3.8rem" },
+                lineHeight: 1.05,
+                textTransform: "uppercase",
+                mb: 2.5,
+                textShadow: "0 2px 10px rgba(0,0,0,0.45)",
+                letterSpacing: "1px",
+              }}
+            >
+              SMART IT SOLUTIONS
+            </Typography>
+
+            {/* Body paragraph */}
+            <Typography
+              sx={{
+                color: "rgba(255,255,255,0.88)",
+                fontFamily: "'Poppins', sans-serif",
+                fontSize: { xs: "0.82rem", sm: "0.88rem", md: "0.92rem" },
+                lineHeight: 1.75,
+                mb: 4,
+                maxWidth: 400,
                 textShadow: "0 1px 4px rgba(0,0,0,0.5)",
               }}
             >
               Crafting tailored IT strategies to align seamlessly with your
               organisational goals, ensuring optimal performance and efficiency.
             </Typography>
+
+            {/* CTA button */}
             <Button
               component={Link}
               to="/contact"
@@ -202,12 +189,14 @@ export default function Home() {
               sx={{
                 backgroundColor: colors.accent,
                 color: colors.white,
+                fontFamily: "'Poppins', sans-serif",
                 fontWeight: 600,
-                px: 3,
-                py: 1,
-                borderRadius: "4px",
+                px: { xs: 3, md: 3.5 },
+                py: { xs: 1, md: 1.1 },
+                borderRadius: "3px",
                 textTransform: "none",
-                fontSize: "0.88rem",
+                fontSize: { xs: "0.82rem", md: "0.88rem" },
+                letterSpacing: "0.3px",
                 boxShadow: "none",
                 "&:hover": {
                   backgroundColor: colors.accentDark,
@@ -221,385 +210,412 @@ export default function Home() {
         </Container>
       </Box>
 
-{/* ── About Us ── */}
-<Box
-  ref={aboutRef}
-  sx={{
-    position: "relative",
-    overflow: "hidden",
-    backgroundColor: "#6B7986",
-    minHeight: { xs: 420, sm: 500, md: 580 },
-    py: { xs: 6, sm: 8, md: 10 },
-    mt: -10,
-    display: "flex",
-    alignItems: "center",
-  }}
->
-  <Container
-    maxWidth="lg"
-    sx={{
-      position: "relative",
-      zIndex: 2,
-      height: "100%",
-    }}
-  >
-    {/* ── About Content ── */}
-    <Box
-      sx={{
-        width: "100%",
-        maxWidth: "1100px",
-        mx: "auto",
-        textAlign: "left",
-      }}
-    >
-      {/* About Us Heading */}
-      <Typography
-        sx={{
-          color: colors.navy,
-          fontWeight: 800,
-          fontSize: { xs: "2rem", md: "2.6rem" },
-          fontFamily: "'Poppins', sans-serif",
-          letterSpacing: "0.5px",
-          mb: 2,
-          textAlign: "left",
-        }}
-      >
-        About Us
-      </Typography>
-
-      {/* ── Line + Moving Dot ── */}
+      {/* ════════════════════════════════════════════
+          ABOUT US SECTION
+          ════════════════════════════════════════════ */}
       <Box
+        ref={aboutRef}
         sx={{
           position: "relative",
-          width: {
-            xs: "100%",
-            md: "calc(100% + 60px)",
-          },
-          height: "1px",
-          backgroundColor: "rgba(255,255,255,0.9)",
-          mb: 3.5,
+          overflow: "hidden",           /* clips the hexagon at the edges */
+          backgroundColor: "#6B7986",
+          py: { xs: 7, sm: 9, md: 11 },
         }}
       >
-        {/* Orange Moving Dot */}
-        <Box
-          ref={dotRef}
-          sx={{
-            position: "absolute",
-            top: "50%",
-            left: "0%",
-            width: "9px",
-            height: "9px",
-            backgroundColor: colors.accent,
-            borderRadius: "50%",
-            transform: "translate(-50%, -50%)",
-            willChange: "left",
-            zIndex: 2,
-          }}
-        />
-      </Box>
+        <Container maxWidth="lg" sx={{ position: "relative", zIndex: 2 }}>
+          {/* Section heading */}
+          <Typography
+            sx={{
+              color: colors.navy,
+              fontFamily: "'Oswald', sans-serif",
+              fontWeight: 600,
+              fontSize: { xs: "1.9rem", sm: "2.2rem", md: "2.6rem" },
+              letterSpacing: "1px",
+              textTransform: "uppercase",
+              mb: 2,
+            }}
+          >
+            About Us
+          </Typography>
 
-      {/* ── About Description ── */}
-      <Typography
-        sx={{
-          color: colors.navy,
-          fontSize: { xs: "0.95rem", md: "1.05rem" },
-          lineHeight: 1.8,
-          mb: 3,
-          maxWidth: "960px",
-          textAlign: "left",
-        }}
-      >
-        iFathom makes innovation meet digital transformation. With 20+ years
-        of growth and trusted by industry leaders like Philips & ICICI
-        Prudential, we empower businesses to thrive online and ensure their
-        entire IT system is robust and future-ready. We plan the building
-        blocks of the world's future.
-      </Typography>
-    </Box>
-
-    {/* ── Hexagon Cluster ── */}
-    <Box
-      sx={{
-        position: "absolute",
-
-        // Hexagons below the text
-        left: "90%",
-        bottom: "-105%",
-
-        transform: "translateX(-50%)",
-
-        width: { xs: 220, sm: 270, md: 330 },
-        height: { xs: 220, sm: 270, md: 330 },
-
-        zIndex: 1,
-      }}
-    >
-      {/* Outer Hexagon */}
-      <Box
-        component="svg"
-        viewBox="0 0 200 200"
-        sx={{
-          position: "absolute",
-          inset: 0,
-          width: "100%",
-          height: "100%",
-          pointerEvents: "none",
-
-          "@keyframes rotateCW": {
-            from: {
-              transform: "rotate(0deg)",
-            },
-            to: {
-              transform: "rotate(360deg)",
-            },
-          },
-
-          animation: "rotateCW 20s linear infinite",
-          transformOrigin: "50% 50%",
-        }}
-      >
-        <polygon
-          points="100,6 183,53 183,147 100,194 17,147 17,53"
-          fill="none"
-          stroke="rgba(255,255,255,0.35)"
-          strokeWidth="1"
-        />
-      </Box>
-
-      {/* Inner Hexagon */}
-      <Box
-        component="svg"
-        viewBox="0 0 200 200"
-        sx={{
-          position: "absolute",
-          left: "18%",
-          top: "22%",
-          width: "68%",
-          height: "68%",
-          pointerEvents: "none",
-
-          "@keyframes rotateCCW": {
-            from: {
-              transform: "rotate(360deg)",
-            },
-            to: {
-              transform: "rotate(0deg)",
-            },
-          },
-
-          animation: "rotateCCW 26s linear infinite",
-          transformOrigin: "50% 50%",
-        }}
-      >
-        <polygon
-          points="100,6 183,53 183,147 100,194 17,147 17,53"
-          fill="none"
-          stroke="rgba(255,255,255,0.45)"
-          strokeWidth="1"
-        />
-      </Box>
-
-      {/* Know More */}
-      <Box
-        component={Link}
-        to="/about"
-        sx={{
-          position: "absolute",
-          left: "50%",
-          top: "48%",
-          transform: "translate(-50%, -50%)",
-          color: colors.navy,
-          fontFamily: "'Georgia', serif",
-          fontStyle: "italic",
-          fontSize: { xs: "0.95rem", md: "1.05rem" },
-          fontWeight: 500,
-          textDecoration: "none",
-          whiteSpace: "nowrap",
-
-          "&:hover": {
-            color: colors.accent,
-          },
-        }}
-      >
-        Know More
-      </Box>
-    </Box>
-  </Container>
-</Box>
-
-      {/* ── Our Expertise ── */}
-      {/* ── Our Expertise ── */}
-<Box
-  id="our-expertise"
-  sx={{
-    position: "relative",
-    overflow: "hidden",
-    backgroundColor: colors.white,
-    py: { xs: 6, sm: 8, md: 10 },
-  }}
->
-  <Container maxWidth="lg">
-
-    {/* ── Section Heading + Line + Dot ── */}
-    <Box
-      sx={{
-        width: "100%",
-        maxWidth: "1100px",
-        mx: "auto",
-        mb: 5,
-      }}
-    >
-      {/* Our Expertise Heading */}
-      <Typography
-        sx={{
-          color: colors.navy,
-          fontWeight: 800,
-          fontSize: { xs: "2rem", md: "2.6rem" },
-          fontFamily: "'Poppins', sans-serif",
-          letterSpacing: "0.5px",
-          mb: 2,
-          textAlign: "left",
-        }}
-      >
-        Our Expertise
-      </Typography>
-
-      {/* ── Line + Moving Dot ── */}
-      <Box
-        sx={{
-          position: "relative",
-          width: {
-            xs: "100%",
-            md: "calc(100% + 60px)",
-          },
-          height: "1px",
-          backgroundColor: "rgba(107,121,134,0.45)",
-          mb: 4,
-        }}
-      >
-        {/* Orange Moving Dot */}
-        <Box
-          sx={{
-            position: "absolute",
-            top: "50%",
-            left: `${dotPosition}%`,
-            width: "9px",
-            height: "9px",
-            backgroundColor: colors.accent,
-            borderRadius: "50%",
-            transform: "translate(-50%, -50%)",
-            willChange: "left",
-            transition: "left 0.25s ease-out",
-            zIndex: 2,
-          }}
-        />
-      </Box>
-    </Box>
-
-    {/* ── Cards Background ── */}
-    <Box
-      sx={{
-        backgroundColor: "#fdf4ec",
-        p: { xs: 2, md: 3 },
-        width:"100%",
-        borderRadius: "4px",
-      }}
-    >
-      <Grid container spacing={3}>
-        {expertise.map((item) => (
-          <Grid item xs={12} sm={4} key={item.title}>
+          {/* Animated divider line + dot */}
+          <Box
+            sx={{
+              position: "relative",
+              width: "100%",
+              height: "1px",
+              backgroundColor: "rgba(255,255,255,0.85)",
+              mb: 3.5,
+            }}
+          >
             <Box
+              ref={dotRef}
               sx={{
-                backgroundColor: colors.white,
-                border: `1px solid ${colors.border}`,
-                borderRadius: "4px",
-                overflow: "hidden",
-                height: "100%",
-                display: "flex",
-                flexDirection: "column",
+                position: "absolute",
+                top: "50%",
+                left: "0%",
+                width: "10px",
+                height: "10px",
+                backgroundColor: colors.accent,
+                borderRadius: "50%",
+                transform: "translate(-50%, -50%)",
+                willChange: "left",
+                zIndex: 2,
+              }}
+            />
+          </Box>
+
+          {/* Body text — sits left, hex graphic floats right */}
+          <Box
+            sx={{
+              maxWidth: { xs: "100%", md: "62%", lg: "58%" },
+            }}
+          >
+            <Typography
+              sx={{
+                color: colors.navy,
+                fontFamily: "'Poppins', sans-serif",
+                fontSize: { xs: "0.9rem", sm: "0.95rem", md: "1rem" },
+                lineHeight: 1.85,
+                fontWeight: 400,
               }}
             >
-              {/* Card image */}
-              <Box
-                component="img"
-                src={item.image}
-                alt={item.title}
-                sx={{
-                  width: "100%",
-                  height: { xs: 140, md: 160 },
-                  objectFit: "cover",
-                  display: "block",
-                }}
-              />
+              iFathom makes innovation meet digital transformation. With 20+ years
+              of growth and trusted by industry leaders like Philips &amp; ICICI
+              Prudential, we empower businesses to thrive online and ensure their
+              entire IT system is robust and future-ready. We plan the building
+              blocks of the world's future.
+            </Typography>
+          </Box>
+        </Container>
 
-              {/* Card body */}
-              <Box
-                sx={{
-                  p: { xs: 1.5, md: 2 },
-                  flexGrow: 1,
-                  display: "flex",
-                  flexDirection: "column",
-                }}
-              >
-                <Typography
+        {/* ── Hexagon cluster — right edge, ~3/4 visible ── */}
+        {/*
+          Strategy: position absolute, right-anchored so the right ~25% is clipped.
+          On desktop the hex sits in the right portion of the section;
+          on mobile it drops behind the text (z-index 1) and is partially visible.
+        */}
+        <Box
+          sx={{
+            position: "absolute",
+            /* Vertically centered in the section */
+            top: "50%",
+            transform: "translateY(-50%)",
+            /*
+             * Push it right so roughly 1/4 of the hex is hidden off-screen.
+             * The hex is `size` wide; we offset right by ~size * 0.25 so 75% shows.
+             * We use a CSS custom-property trick via sx width to keep it DRY.
+             */
+            right: { xs: "-70px", sm: "-90px", md: "-110px" },
+            width: { xs: 240, sm: 290, md: 360, lg: 400 },
+            height: { xs: 240, sm: 290, md: 360, lg: 400 },
+            zIndex: 1,
+            pointerEvents: "none",
+          }}
+        >
+          {/* Outer rotating hexagon */}
+          <Box
+            component="svg"
+            viewBox="0 0 200 200"
+            sx={{
+              position: "absolute",
+              inset: 0,
+              width: "100%",
+              height: "100%",
+              "@keyframes rotateCW": {
+                from: { transform: "rotate(0deg)" },
+                to: { transform: "rotate(360deg)" },
+              },
+              animation: "rotateCW 22s linear infinite",
+              transformOrigin: "50% 50%",
+            }}
+          >
+            <polygon
+              points="100,6 183,53 183,147 100,194 17,147 17,53"
+              fill="none"
+              stroke="rgba(255,255,255,0.30)"
+              strokeWidth="1.2"
+            />
+          </Box>
+
+          {/* Middle hexagon */}
+          <Box
+            component="svg"
+            viewBox="0 0 200 200"
+            sx={{
+              position: "absolute",
+              left: "14%",
+              top: "14%",
+              width: "72%",
+              height: "72%",
+              "@keyframes rotateCCW": {
+                from: { transform: "rotate(360deg)" },
+                to: { transform: "rotate(0deg)" },
+              },
+              animation: "rotateCCW 28s linear infinite",
+              transformOrigin: "50% 50%",
+            }}
+          >
+            <polygon
+              points="100,6 183,53 183,147 100,194 17,147 17,53"
+              fill="none"
+              stroke="rgba(255,255,255,0.40)"
+              strokeWidth="1.2"
+            />
+          </Box>
+
+          {/* Inner hexagon */}
+          <Box
+            component="svg"
+            viewBox="0 0 200 200"
+            sx={{
+              position: "absolute",
+              left: "30%",
+              top: "30%",
+              width: "40%",
+              height: "40%",
+              "@keyframes rotateCW2": {
+                from: { transform: "rotate(0deg)" },
+                to: { transform: "rotate(360deg)" },
+              },
+              animation: "rotateCW2 14s linear infinite",
+              transformOrigin: "50% 50%",
+            }}
+          >
+            <polygon
+              points="100,6 183,53 183,147 100,194 17,147 17,53"
+              fill="none"
+              stroke="rgba(255,255,255,0.55)"
+              strokeWidth="1.5"
+            />
+          </Box>
+
+          {/* "Know More" link — centered inside the hex cluster */}
+          <Box
+            component={Link}
+            to="/about"
+            sx={{
+              position: "absolute",
+              left: "50%",
+              top: "50%",
+              transform: "translate(-50%, -50%)",
+              color: colors.navy,
+              fontFamily: "'Georgia', 'Times New Roman', serif",
+              fontStyle: "italic",
+              fontSize: { xs: "0.88rem", md: "1rem" },
+              fontWeight: 500,
+              textDecoration: "none",
+              whiteSpace: "nowrap",
+              zIndex: 3,
+              pointerEvents: "auto",
+              "&:hover": { color: colors.accent },
+            }}
+          >
+            Know More
+          </Box>
+        </Box>
+      </Box>
+
+      {/* ════════════════════════════════════════════
+          OUR EXPERTISE SECTION
+          ════════════════════════════════════════════ */}
+      <Box
+        id="our-expertise"
+        sx={{
+          position: "relative",
+          backgroundColor: colors.white,
+          py: { xs: 7, sm: 9, md: 11 },
+        }}
+      >
+        <Container maxWidth="lg">
+
+          {/* Section heading */}
+          <Typography
+            sx={{
+              color: colors.navy,
+              fontFamily: "'Oswald', sans-serif",
+              fontWeight: 600,
+              fontSize: { xs: "1.9rem", sm: "2.2rem", md: "2.6rem" },
+              letterSpacing: "1px",
+              textTransform: "uppercase",
+              mb: 2,
+            }}
+          >
+            Our Expertise
+          </Typography>
+
+          {/* Animated divider line + dot */}
+          <Box
+            sx={{
+              position: "relative",
+              width: "100%",
+              height: "1px",
+              backgroundColor: "rgba(107,121,134,0.4)",
+              mb: { xs: 5, md: 6 },
+            }}
+          >
+            <Box
+              sx={{
+                position: "absolute",
+                top: "50%",
+                left: `${dotPosition}%`,
+                width: "10px",
+                height: "10px",
+                backgroundColor: colors.accent,
+                borderRadius: "50%",
+                transform: "translate(-50%, -50%)",
+                willChange: "left",
+                transition: "left 0.25s ease-out",
+                zIndex: 2,
+              }}
+            />
+          </Box>
+
+          {/*
+           * Orange background panel + cards.
+           *
+           * Reference site: the orange/warm panel extends wider than the cards,
+           * with generous padding on all sides. Cards are narrower (not full-width
+           * of the container). We achieve this by giving the panel negative
+           * horizontal margins so it bleeds a bit beyond the card area while
+           * keeping cards centred.
+           */}
+          <Box
+            sx={{
+              position: "relative",
+              backgroundColor: "#F5A55A",   /* warm orange background */
+              borderRadius: "2px",
+              /*
+               * The panel is wider than the card grid. We extend it with
+               * negative margins so it bleeds ~40px beyond the cards on each side.
+               * Then we add matching horizontal padding to pull the cards back in.
+               */
+              mx: { xs: 0, md: "-40px", lg: "-60px" },
+              px: { xs: 2, sm: 3, md: "56px", lg: "76px" },
+              pt: { xs: 3.5, md: 5 },
+              pb: { xs: 4, md: 6 },
+            }}
+          >
+            <Grid
+              container
+              spacing={{ xs: 2, md: 2.5 }}
+              justifyContent="center"
+            >
+              {expertise.map((item) => (
+                <Grid
+                  item
+                  xs={12}
+                  sm={6}
+                  md={4}
+                  key={item.title}
                   sx={{
-                    color: colors.navy,
-                    fontWeight: 700,
-                    fontSize: { xs: "0.8rem", md: "0.85rem" },
-                    mb: 1,
-                    textTransform: "uppercase",
-                    letterSpacing: 0.3,
-                    fontFamily: "'Poppins', sans-serif",
+                    /*
+                     * Limit each card column width so cards are narrower than
+                     * the full grid width, matching the reference proportions.
+                     */
+                    maxWidth: { md: "320px" },
                   }}
                 >
-                  {item.title}
-                </Typography>
-
-                <Typography
-                  sx={{
-                    color: colors.grayText,
-                    fontSize: { xs: "0.78rem", md: "0.82rem" },
-                    lineHeight: 1.65,
-                    mb: 2,
-                    flexGrow: 1,
-                  }}
-                >
-                  {item.description}
-                </Typography>
-
-                {/* Read More */}
-                <Box sx={{ display: "flex", justifyContent: "center" }}>
-                  <Button
-                    component={Link}
-                    to={item.to}
-                    variant="outlined"
+                  <Box
                     sx={{
-                      borderColor: colors.navy,
-                      color: colors.navy,
-                      fontWeight: 600,
-                      fontSize: "0.75rem",
-                      textTransform: "none",
-                      px: 3,
-                      py: 0.6,
-                      borderRadius: "4px",
-                      "&:hover": {
-                        backgroundColor: colors.navy,
-                        color: colors.white,
-                        borderColor: colors.navy,
-                      },
+                      backgroundColor: colors.white,
+                      borderRadius: "2px",
+                      overflow: "hidden",
+                      height: "100%",
+                      display: "flex",
+                      flexDirection: "column",
+                      boxShadow: "0 2px 8px rgba(0,0,0,0.08)",
                     }}
                   >
-                    Read More
-                  </Button>
-                </Box>
-              </Box>
-            </Box>
-          </Grid>
-        ))}
-      </Grid>
-    </Box>
-  </Container>
-</Box>
+                    {/* Card image */}
+                    <Box
+                      component="img"
+                      src={item.image}
+                      alt={item.title}
+                      sx={{
+                        width: "100%",
+                        height: { xs: 148, sm: 155, md: 165 },
+                        objectFit: "cover",
+                        display: "block",
+                        flexShrink: 0,
+                      }}
+                    />
+
+                    {/* Card body */}
+                    <Box
+                      sx={{
+                        px: { xs: 2, md: 2.5 },
+                        pt: { xs: 1.75, md: 2 },
+                        pb: { xs: 2, md: 2.5 },
+                        flexGrow: 1,
+                        display: "flex",
+                        flexDirection: "column",
+                      }}
+                    >
+                      {/* Card title */}
+                      <Typography
+                        sx={{
+                          color: colors.navy,
+                          fontFamily: "'Oswald', sans-serif",
+                          fontWeight: 600,
+                          fontSize: { xs: "0.85rem", md: "0.9rem" },
+                          letterSpacing: "0.8px",
+                          textTransform: "uppercase",
+                          lineHeight: 1.3,
+                          mb: 1.25,
+                        }}
+                      >
+                        {item.title}
+                      </Typography>
+
+                      {/* Card description */}
+                      <Typography
+                        sx={{
+                          color: colors.grayText,
+                          fontFamily: "'Poppins', sans-serif",
+                          fontSize: { xs: "0.78rem", md: "0.8rem" },
+                          lineHeight: 1.7,
+                          flexGrow: 1,
+                          mb: 2,
+                        }}
+                      >
+                        {item.description}
+                      </Typography>
+
+                      {/* "Know More" — bottom-right aligned, matching reference */}
+                      <Box sx={{ display: "flex", justifyContent: "flex-end" }}>
+                        <Box
+                          component={Link}
+                          to={item.to}
+                          sx={{
+                            color: colors.navy,
+                            fontFamily: "'Georgia', 'Times New Roman', serif",
+                            fontStyle: "italic",
+                            fontSize: { xs: "0.82rem", md: "0.85rem" },
+                            fontWeight: 500,
+                            textDecoration: "none",
+                            borderBottom: `1px solid ${colors.navy}`,
+                            lineHeight: 1.4,
+                            pb: "1px",
+                            transition: "color 0.15s, border-color 0.15s",
+                            "&:hover": {
+                              color: colors.accent,
+                              borderColor: colors.accent,
+                            },
+                          }}
+                        >
+                          Know More
+                        </Box>
+                      </Box>
+                    </Box>
+                  </Box>
+                </Grid>
+              ))}
+            </Grid>
+          </Box>
+        </Container>
+      </Box>
+
     </Box>
   );
 }
