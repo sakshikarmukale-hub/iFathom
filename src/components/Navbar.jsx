@@ -20,8 +20,14 @@ const navLinks = [
   { label: "About", to: "/about" },
   { label: "Products", to: "/products" },
   { label: "Services", to: "/services" },
-  { label: "Facility Management Services", to: "/facility-management-services" },
-  { label: "Network Integration Services", to: "/network-integration-services" },
+  {
+    label: "Facility Management Services",
+    to: "/facility-management-services",
+  },
+  {
+    label: "Network Integration Services",
+    to: "/network-integration-services",
+  },
   { label: "Careers", to: "/careers" },
   { label: "Contact", to: "/contact" },
 ];
@@ -34,52 +40,57 @@ export default function Navbar() {
 
   return (
     <>
-      {/*
-       * Full-width transparent positioning wrapper — invisible, only for layout.
-       * The visible gray pill is the inner Box below.
-       */}
+      {/* ── Fixed Navbar ── */}
       <Box
         sx={{
           position: "fixed",
-          top: 0,
+          top: 8,
           left: 0,
           right: 0,
           zIndex: 1200,
           display: "flex",
           justifyContent: "center",
-          pt: "8px",
           px: 1,
           pointerEvents: "none",
         }}
       >
-        {/* ── Visible navbar container — compact gray pill ── */}
+        {/* ── Visible Navbar Container ── */}
         <Box
           sx={{
             pointerEvents: "auto",
             display: "flex",
             alignItems: "center",
-            backgroundColor: "rgba(230, 230, 235, 0.92)",
+
+            /* Light gray background */
+            backgroundColor: "#FFFFFF73",
+
             borderRadius: "6px",
-            px: "20px",
-            py: "12px",
-            mt:2.5,
+
+            /* Reduced navbar padding */
+            px: "12px",
+            py: "15px",
+
             gap: 0,
-            maxWidth: "100%",
-            boxShadow: "0 2px 8px rgba(0,0,0,0.14)",
+
+            /* Reduce overall width */
+            width: "fit-content",
+            maxWidth: "calc(100% - 20px)",
+
+            boxShadow: "0 2px 8px rgba(0,0,0,0.12)",
           }}
         >
-          {/* ── Logo section ── */}
+          {/* ── Logo Section ── */}
           <Box
             component={Link}
             to="/"
             sx={{
               display: "flex",
               alignItems: "center",
-              gap: "6px",
+              gap: "5px",
               textDecoration: "none",
               flexShrink: 0,
-              pr: "10px",
-              mr: "6px",
+              pr: "8px",
+              mr: "5px",
               borderRight: "1px solid #c4c8cf",
             }}
           >
@@ -88,17 +99,18 @@ export default function Navbar() {
               src={ifathomLogo}
               alt="iFathom logo"
               sx={{
-                width: 30,
-                height: 30,
+                width: 35,
+                height: 35,
                 objectFit: "contain",
                 display: "block",
               }}
             />
+
             <Typography
               sx={{
                 color: "#1a1a2e",
                 fontWeight: 700,
-                fontSize: "1rem",
+                fontSize: "0.9rem",
                 letterSpacing: 0.2,
                 fontFamily: "'Poppins', sans-serif",
                 whiteSpace: "nowrap",
@@ -108,17 +120,18 @@ export default function Navbar() {
             </Typography>
           </Box>
 
-          {/* ── Desktop nav buttons ── */}
+          {/* ── Desktop Nav Buttons ── */}
           <Box
             sx={{
               display: { xs: "none", lg: "flex" },
               alignItems: "center",
               flexWrap: "nowrap",
-              gap: "6px",
+              gap: "4px",
             }}
           >
             {navLinks.map((link) => {
               const active = location.pathname === link.to;
+
               return (
                 <Box
                   key={link.to}
@@ -127,20 +140,34 @@ export default function Navbar() {
                   sx={{
                     display: "inline-flex",
                     alignItems: "center",
-                    px: "18px",
-                    py: "9px",
+
+                    /* Smaller buttons */
+                    px: "12px",
+                    py: "10px",
+
                     borderRadius: "4px",
+
                     backgroundColor: active ? "#1a2a4a" : "#ffffff",
+
                     color: active ? "#ffffff" : "#1a1a2e",
+
                     textDecoration: "none",
-                    fontSize: "0.92rem",
+
+                    fontSize: "0.78rem",
+
                     fontWeight: active ? 600 : 400,
+
                     whiteSpace: "nowrap",
-                    lineHeight: 1.4,
-                    transition: "background-color 0.15s, color 0.15s",
+
+                    lineHeight: 1.3,
+
+                    transition:
+                      "background-color 0.15s, color 0.15s",
+
+                    /* Hover color */
                     "&:hover": {
-                      backgroundColor: active ? "#243559" : "#e8ecf0",
-                      color: active ? "#ffffff" : "#1a1a2e",
+                      backgroundColor: "#3a3f47",
+                      color: "#ffffff",
                     },
                   }}
                 >
@@ -150,11 +177,24 @@ export default function Navbar() {
             })}
           </Box>
 
-          {/* ── Mobile hamburger ── */}
-          <Box sx={{ display: { xs: "flex", lg: "none" }, ml: 1 }}>
+          {/* ── Mobile Hamburger ── */}
+          <Box
+            sx={{
+              display: { xs: "flex", lg: "none" },
+              ml: 1,
+            }}
+          >
             <IconButton
               onClick={toggleDrawer}
-              sx={{ color: "#1a1a2e", p: "4px" }}
+              sx={{
+                color: "#1a1a2e",
+                p: "4px",
+
+                "&:hover": {
+                  backgroundColor: "#3a3f47",
+                  color: "#ffffff",
+                },
+              }}
               aria-label="open menu"
             >
               {mobileOpen ? <CloseIcon /> : <MenuIcon />}
@@ -163,16 +203,7 @@ export default function Navbar() {
         </Box>
       </Box>
 
-      {/* Spacer so page content doesn't sit under the fixed navbar */}
-<Box
-  sx={{
-    height: {
-      xs: "19px",
-      sm: "21px",
-      lg: "20px",
-    },
-  }}
-/>
+      {/* ── No Spacer / No Extra Gap ── */}
 
       {/* ── Mobile Drawer ── */}
       <Drawer
@@ -181,12 +212,15 @@ export default function Navbar() {
         onClose={toggleDrawer}
         PaperProps={{
           sx: {
-            width: { xs: "80%", sm: "44%" },
+            width: {
+              xs: "80%",
+              sm: "44%",
+            },
             backgroundColor: "#f4f6f9",
           },
         }}
       >
-        {/* Drawer header */}
+        {/* ── Drawer Header ── */}
         <Box
           sx={{
             display: "flex",
@@ -201,14 +235,24 @@ export default function Navbar() {
             component={Link}
             to="/"
             onClick={toggleDrawer}
-            sx={{ display: "flex", alignItems: "center", gap: "6px", textDecoration: "none" }}
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              gap: "6px",
+              textDecoration: "none",
+            }}
           >
             <Box
               component="img"
               src={ifathomLogo}
               alt="iFathom"
-              sx={{ width: 28, height: 28, objectFit: "contain" }}
+              sx={{
+                width: 28,
+                height: 28,
+                objectFit: "contain",
+              }}
             />
+
             <Typography
               sx={{
                 color: "#1a1a2e",
@@ -220,19 +264,28 @@ export default function Navbar() {
               iFathom
             </Typography>
           </Box>
+
           <IconButton
             onClick={toggleDrawer}
-            sx={{ color: "#1a1a2e" }}
+            sx={{
+              color: "#1a1a2e",
+
+              "&:hover": {
+                backgroundColor: "#3a3f47",
+                color: "#ffffff",
+              },
+            }}
             aria-label="close menu"
           >
             <CloseIcon />
           </IconButton>
         </Box>
 
-        {/* Drawer links */}
+        {/* ── Drawer Links ── */}
         <List sx={{ pt: 1 }}>
           {navLinks.map((link) => {
             const active = location.pathname === link.to;
+
             return (
               <ListItem key={link.to} disablePadding>
                 <ListItemButton
@@ -245,16 +298,29 @@ export default function Navbar() {
                     mx: 1.5,
                     my: 0.3,
                     borderRadius: "4px",
-                    backgroundColor: active ? "#1a2a4a" : "#ffffff",
+
+                    backgroundColor: active
+                      ? "#1a2a4a"
+                      : "#ffffff",
+
+                    "&:hover": {
+                      backgroundColor: "#3a3f47",
+                    },
                   }}
                 >
                   <ListItemText
                     primary={link.label}
                     primaryTypographyProps={{
                       sx: {
-                        color: active ? "#ffffff" : "#1a1a2e",
+                        color: active
+                          ? "#ffffff"
+                          : "#1a1a2e",
+
                         fontWeight: active ? 600 : 400,
+
                         fontSize: "0.9rem",
+
+                        transition: "color 0.15s",
                       },
                     }}
                   />
