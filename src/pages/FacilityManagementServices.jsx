@@ -159,7 +159,7 @@ export default function FacilityManagementServices() {
               lineHeight: 1.65,
               textAlign: "justify",
               textShadow: "0 1px 6px rgba(0,0,0,0.5)",
-              maxWidth: 700,
+              maxWidth: 850,
             }}
           >
             We provide comprehensive IT management services, including remote
@@ -174,21 +174,23 @@ export default function FacilityManagementServices() {
       <Box sx={{ backgroundColor: colors.white, py: { xs: 5, md: 6 } }}>
         <Container maxWidth="lg">
 
-          <Grid container spacing={2}>
+          <Grid container spacing={4}>
             {services.map((s) => (
               <Grid item xs={12} sm={6} md={4} key={s.title}>
                 <Box
                   sx={{
                     border: `1px solid ${colors.border}`,
-                    borderRadius: "4px",
+                    borderRadius: "10px",
                     overflow: "hidden",
                     height: "100%",
                     display: "flex",
                     flexDirection: "column",
                     backgroundColor: colors.white,
-                    transition: "box-shadow 0.2s",
+                    boxShadow: "0 4px 18px rgba(10,31,61,0.08)",
+                    transition: "box-shadow 0.2s, transform 0.2s",
                     "&:hover": {
-                      boxShadow: "0 4px 16px rgba(10,31,61,0.1)",
+                      boxShadow: "0 6px 30px rgba(10,31,61,0.15)",
+                      transform: "translateY(-2px)",
                     },
                   }}
                 >
@@ -218,18 +220,19 @@ export default function FacilityManagementServices() {
                     <Typography
                       sx={{
                         color: colors.navy,
-                        fontWeight: 700,
-                        fontSize: { xs: "0.95rem", md: "1.02rem" },
+                        fontWeight: 900,
+                        fontSize: { xs: "0.95rem", md: "0.90rem" },
                         mb: 0.75,
                         lineHeight: 1.35,
-                        fontFamily: "'Poppins', sans-serif",
+                        fontFamily: "anton, sans-serif",
+                        transform: "scaleY(1.7)",
                       }}
                     >
                       {s.title}
                     </Typography>
                     <Typography
                       sx={{
-                        color: colors.grayText,
+                        color: "#000",
                         fontSize: { xs: "0.82rem", md: "0.86rem" },
                         lineHeight: 1.6,
                       }}
@@ -268,8 +271,9 @@ export default function FacilityManagementServices() {
                 color: colors.navy,
                 fontWeight: 800,
                 fontSize: { xs: "1.3rem", md: "2.5rem" },
-                fontFamily: "'Poppins', sans-serif",
+                fontFamily: "anton, sans-serif",
                 mb: 1.5,
+                transform: "scaleY(1.3)",
               }}
             >
               Satisfaction Guarantee
@@ -281,7 +285,7 @@ export default function FacilityManagementServices() {
                 color: colors.navy,
                 fontSize: { xs: "0.85rem", md: "0.92rem" },
                 lineHeight: 1.75,
-                maxWidth: 560,
+                maxWidth: 700,
                 mx: "auto",
               }}
             >
