@@ -159,6 +159,7 @@ export default function Home() {
                 fontFamily: "antom, sans-serif",
                 transform: "scaleY(1.55)",
                 transformOrigin: "center",
+                letterSpacing: 0.10,
                 textShadow: "0 2px 8px rgba(0,0,0,0.4)",
               }}
             >
@@ -168,7 +169,7 @@ export default function Home() {
               sx={{
                 color: colors.white,
                 fontWeight: 500,
-                fontSize: { xs: "1rem", sm: "1.1rem", md: "1.44rem" },
+                fontSize: { xs: "1rem", sm: "1.1rem", md: "1.66rem" },
                 lineHeight: 1.5,
                 mb: 2.5,
                 textTransform: "uppercase",
@@ -186,7 +187,7 @@ export default function Home() {
                 fontSize: { xs: "0.82rem", sm: "0.98rem" },
                 lineHeight: 1.65,
                 mb: 3.5,
-                fontWeight: 500,
+                fontWeight: 600,
                 maxWidth: 900,
                 fontFamily: "open sans, sans-serif",
                 textShadow: "0 1px 4px rgba(0,0,0,0.5)",

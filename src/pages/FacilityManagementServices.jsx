@@ -173,45 +173,6 @@ export default function FacilityManagementServices() {
       {/* ── Service Cards ── */}
       <Box sx={{ backgroundColor: colors.white, py: { xs: 5, md: 6 } }}>
         <Container maxWidth="lg">
-          {/* Section heading + underline with scroll-animated orange dot */}
-          <Box sx={{ mb: { xs: 4, md: 5 } }}>
-            <Typography
-              sx={{
-                color: colors.navy,
-                fontWeight: 800,
-                fontSize: { xs: "1.9rem", sm: "2.3rem", md: "2.6rem" },
-                fontFamily: "anton, sans-serif",
-                letterSpacing: 0.5,
-                mb: 1.5,
-              }}
-            >
-              Services We Offer
-            </Typography>
-
-            <Box
-              sx={{
-                position: "relative",
-                width: "100%",
-                height: 2,
-                backgroundColor: colors.border || "rgba(10,31,61,0.25)",
-              }}
-            >
-              <Box
-                sx={{
-                  position: "absolute",
-                  top: "50%",
-                  left: `${scrollPercent}%`,
-                  width: 12,
-                  height: 12,
-                  borderRadius: "50%",
-                  backgroundColor: colors.accent,
-                  transform: "translate(-50%, -50%)",
-                  transition: "left 0.15s ease-out",
-                  boxShadow: "0 0 6px rgba(0,0,0,0.15)",
-                }}
-              />
-            </Box>
-          </Box>
 
           <Grid container spacing={2}>
             {services.map((s) => (

@@ -148,13 +148,13 @@ export default function Products() {
             sx={{
               color: colors.white,
               fontWeight: 200,
-              fontSize: { xs: "0.8rem", sm: "0.5rem", md: "0.9rem" },
+              fontSize: { xs: "0.8rem", sm: "0.5rem", md: "1rem" },
               fontFamily: "anton, sans-serif",
               lineHeight: 1,
               textShadow: "0 2px 12px rgba(0,0,0,0.5)",
               ml: 33,
               mt: 5,
-              transform: "scaleY(1.5)",
+              transform: "scaleY(1)",
             }}
           >
             iFathom optimizes your IT with tailored infrastructure, cloud, and security solutions for efficiency and growth.
@@ -164,7 +164,7 @@ export default function Products() {
 
       {/* ── Products Grid ── */}
       <Box sx={{ backgroundColor: colors.white, py: { xs: 5, md: 6 } }}>
-        <Container maxWidth="md">
+        <Container maxWidth="lg">
           <Box
             sx={{
               display: "flex",
@@ -236,12 +236,12 @@ export default function Products() {
                   <Typography
                     sx={{
                       color: colors.navy,
-                      fontWeight: 800,
-                      fontSize: { xs: "1rem", md: "1.2rem" },
+                      fontWeight: 900,
+                      fontSize: { xs: "1rem", md: "0.89rem" },
                       mb: 0.4,
                       textTransform: "uppercase",
-                      letterSpacing: 0.2,
-                      fontFamily: "'Poppins', sans-serif",
+                      transform: "scaleY(1.9)",
+                      fontFamily: "open sans, sans-serif",
                     }}
                   >
                     {p.title}
