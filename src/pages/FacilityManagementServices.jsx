@@ -172,7 +172,7 @@ export default function FacilityManagementServices() {
 
       {/* ── Service Cards ── */}
       <Box sx={{ backgroundColor: colors.white, py: { xs: 5, md: 6 } }}>
-        <Container maxWidth="md">
+        <Container maxWidth="lg">
           {/* Section heading + underline with scroll-animated orange dot */}
           <Box sx={{ mb: { xs: 4, md: 5 } }}>
             <Typography
