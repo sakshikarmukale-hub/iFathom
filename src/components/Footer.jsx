@@ -295,8 +295,8 @@ export default function Footer() {
                   <Typography
                     sx={{
                       color: "rgba(255,255,255,0.85)",
-                      fontWeight: 600,
-                      fontSize: "0.88rem",
+                      fontWeight: 400,
+                      fontSize: "0.78rem",
                       mb: 0.25,
                     }}
                   >
@@ -310,7 +310,7 @@ export default function Footer() {
                       key={i}
                       sx={{
                         color: "rgba(255,255,255,0.85)",
-                        fontSize: "0.88rem",
+                        fontSize: "0.78rem",
                         lineHeight: 1.4,
                       }}
                     >
@@ -322,7 +322,7 @@ export default function Footer() {
                 <Typography
                   sx={{
                     color: "rgba(255,255,255,0.85)",
-                    fontSize: "0.88rem",
+                    fontSize: "0.78rem",
                     mb: 1,
                   }}
                 >
@@ -347,7 +347,7 @@ export default function Footer() {
                   rel="noreferrer"
                   sx={{
                     color: "rgba(255,255,255,0.85)",
-                    fontSize: "0.85rem",
+                    fontSize: "0.78rem",
                     textDecoration: "underline",
                     textUnderlineOffset: "3px",
                     "&:hover": { color: colors.accent },
