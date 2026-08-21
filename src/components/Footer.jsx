@@ -1,13 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import {
-  Box,
-  Container,
-  Grid,
-  Typography,
-  Stack,
-  Divider,
-} from "@mui/material";
+import { Box, Container, Typography, Stack, Divider } from "@mui/material";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import colors from "../assets/colors";
 
@@ -73,10 +66,17 @@ export default function Footer() {
       {/* ── Work at iFathom Banner (white) ── */}
       <Box sx={{ backgroundColor: colors.white, py: { xs: 4, md: 4.5 } }}>
         <Container maxWidth="lg">
-          <Grid container spacing={{ xs: 3, md: 2 }}>
+          <Box
+            sx={{
+              display: "flex",
+              flexWrap: "wrap",
+              gap: { xs: 3, md: 2 },
+            }}
+          >
             {/* Left: heading + description */}
-            <Grid item xs={12} md={7}>
+            <Box sx={{ flex: { xs: "1 1 100%", md: "1 1 58%" }, textAlign: "center" }}>
               <Typography
+                align="center"
                 sx={{
                   color: colors.navy,
                   fontWeight: 800,
@@ -89,20 +89,22 @@ export default function Footer() {
                 Work at iFathom!
               </Typography>
               <Typography
+                align="center"
                 sx={{
                   color: colors.navy,
                   fontSize: { xs: "0.95rem", md: "1.02rem" },
                   lineHeight: 1.6,
                   maxWidth: 420,
+                  mx: "auto",
                 }}
               >
                 Innovate, grow, and make an impact with a team that values
                 creativity and collaboration. Build what's next!
               </Typography>
-            </Grid>
+            </Box>
 
             {/* Right: current openings + join button */}
-            <Grid item xs={12} md={5}>
+            <Box sx={{ flex: { xs: "1 1 100%", md: "1 1 38%" } }}>
               <Typography
                 align="center"
                 sx={{
@@ -117,40 +119,43 @@ export default function Footer() {
                 Current Openings for
               </Typography>
 
-              <Grid container sx={{ mb: 2, justifyContent: "center" }}>
-                <Grid item xs="auto">
-                  <Box
-                    component="ul"
-                    sx={{
-                      m: 0,
-                      pl: 2.5,
-                      color: colors.navy,
-                      fontSize: "0.92rem",
-                      lineHeight: 1.6,
-                    }}
-                  >
-                    {openingsColumnOne.map((role) => (
-                      <li key={role}>{role}</li>
-                    ))}
-                  </Box>
-                </Grid>
-                <Grid item xs="auto" sx={{ ml: { xs: 4, sm: 6 } }}>
-                  <Box
-                    component="ul"
-                    sx={{
-                      m: 0,
-                      pl: 2.5,
-                      color: colors.navy,
-                      fontSize: "0.92rem",
-                      lineHeight: 1.6,
-                    }}
-                  >
-                    {openingsColumnTwo.map((role) => (
-                      <li key={role}>{role}</li>
-                    ))}
-                  </Box>
-                </Grid>
-              </Grid>
+              <Box
+                sx={{
+                  display: "flex",
+                  justifyContent: "center",
+                  mb: 2,
+                }}
+              >
+                <Box
+                  component="ul"
+                  sx={{
+                    m: 0,
+                    pl: 2.5,
+                    color: colors.navy,
+                    fontSize: "0.92rem",
+                    lineHeight: 1.6,
+                  }}
+                >
+                  {openingsColumnOne.map((role) => (
+                    <li key={role}>{role}</li>
+                  ))}
+                </Box>
+                <Box
+                  component="ul"
+                  sx={{
+                    m: 0,
+                    ml: { xs: 4, sm: 6 },
+                    pl: 2.5,
+                    color: colors.navy,
+                    fontSize: "0.92rem",
+                    lineHeight: 1.6,
+                  }}
+                >
+                  {openingsColumnTwo.map((role) => (
+                    <li key={role}>{role}</li>
+                  ))}
+                </Box>
+              </Box>
 
               {/* Composite "Join Us NOW" button */}
               <Box sx={{ display: "flex", justifyContent: "center" }}>
@@ -215,15 +220,15 @@ export default function Footer() {
                   </Box>
                 </Box>
               </Box>
-            </Grid>
-          </Grid>
+            </Box>
+          </Box>
         </Container>
       </Box>
 
       {/* ── Dark navy section: Our Locations + Links + Copyright ── */}
       <Box sx={{ backgroundColor: colors.navy }}>
         {/* Our Locations */}
-        <Container maxWidth="lg" sx={{ py: { xs: 4.5, md: 5.5 } }}>
+        <Container maxWidth="lg" sx={{ py: { xs: 3, md: 3.5 } }}>
           <Typography
             align="center"
             sx={{
@@ -231,15 +236,24 @@ export default function Footer() {
               fontWeight: 800,
               fontSize: { xs: "1.6rem", md: "2rem" },
               fontFamily: headingFont,
-              mb: 3.5,
+              mb: 2.5,
             }}
           >
             Our Locations
           </Typography>
 
-          <Grid container spacing={3}>
+          <Box
+            sx={{
+              display: "flex",
+              flexWrap: "wrap",
+              gap: 3,
+            }}
+          >
             {locations.map((loc) => (
-              <Grid item xs={12} sm={6} md={4} key={loc.country}>
+              <Box
+                key={loc.country}
+                sx={{ flex: { xs: "1 1 100%", sm: "1 1 45%", md: "1 1 30%" } }}
+              >
                 <Typography
                   sx={{
                     color: colors.white,
@@ -316,9 +330,9 @@ export default function Footer() {
                 >
                   See on Map ›
                 </Box>
-              </Grid>
+              </Box>
             ))}
-          </Grid>
+          </Box>
         </Container>
 
         <Container maxWidth="lg">
@@ -326,10 +340,17 @@ export default function Footer() {
         </Container>
 
         {/* Links */}
-        <Container maxWidth="lg" sx={{ py: { xs: 3.5, md: 4 } }}>
-          <Grid container spacing={3} justifyContent="center">
+        <Container maxWidth="lg" sx={{ py: { xs: 2.5, md: 3 } }}>
+          <Box
+            sx={{
+              display: "flex",
+              flexWrap: "wrap",
+              justifyContent: "center",
+              gap: 3,
+            }}
+          >
             {/* Useful Links */}
-            <Grid item xs={12} sm={4}>
+            <Box sx={{ flex: { xs: "1 1 100%", sm: "1 1 28%" } }}>
               <Typography
                 sx={{
                   color: colors.white,
@@ -360,10 +381,10 @@ export default function Footer() {
                   </Box>
                 ))}
               </Stack>
-            </Grid>
+            </Box>
 
             {/* Legal */}
-            <Grid item xs={12} sm={4}>
+            <Box sx={{ flex: { xs: "1 1 100%", sm: "1 1 28%" } }}>
               <Typography
                 sx={{
                   color: colors.white,
@@ -392,10 +413,10 @@ export default function Footer() {
                   </Typography>
                 ))}
               </Stack>
-            </Grid>
+            </Box>
 
             {/* Contact */}
-            <Grid item xs={12} sm={4}>
+            <Box sx={{ flex: { xs: "1 1 100%", sm: "1 1 28%" } }}>
               <Typography
                 sx={{
                   color: colors.white,
@@ -436,12 +457,12 @@ export default function Footer() {
                   +91 9820663764
                 </Box>
               </Stack>
-            </Grid>
-          </Grid>
+            </Box>
+          </Box>
         </Container>
 
         {/* Copyright */}
-        <Box sx={{ pb: 2.5 }}>
+        <Box sx={{ pb: 2 }}>
           <Typography
             align="center"
             sx={{ color: "rgba(255,255,255,0.6)", fontSize: "0.82rem" }}
