@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Box, Container, Grid, Typography } from "@mui/material";
 import colors from "../assets/colors";
 import facilityHero from "../assets/facility-hero.jpg";
@@ -47,6 +47,41 @@ const services = [
 ];
 
 export default function FacilityManagementServices() {
+  // Tracks overall page-scroll progress (0–100) to animate the orange dot
+  // along the "Services We Offer" underline — same pattern as Services.jsx.
+  const [scrollPercent, setScrollPercent] = useState(0);
+  const tickingRef = useRef(false);
+
+  useEffect(() => {
+    const updateScrollPercent = () => {
+      const scrollTop = window.scrollY || document.documentElement.scrollTop;
+      const docHeight =
+        document.documentElement.scrollHeight - window.innerHeight;
+      const percent =
+        docHeight > 0
+          ? Math.min(100, Math.max(0, (scrollTop / docHeight) * 100))
+          : 0;
+      setScrollPercent(percent);
+      tickingRef.current = false;
+    };
+
+    const onScroll = () => {
+      if (!tickingRef.current) {
+        tickingRef.current = true;
+        window.requestAnimationFrame(updateScrollPercent);
+      }
+    };
+
+    updateScrollPercent();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+    };
+  }, []);
+
   return (
     <Box>
       {/* ── Hero Banner ── */}
@@ -79,28 +114,39 @@ export default function FacilityManagementServices() {
       "linear-gradient(to top, rgba(45, 78, 101, 0.82) 0%, rgba(45, 78, 101, 0.55) 55%, rgba(20, 40, 55, 0.25) 100%)",
   }}
 />
-       {/* Text — center */}
+       {/* Text — bottom, centered, frosted glass banner (Services.jsx style) */}
 <Box
-  sx={{
-    position: "absolute",
-    top: "50%",
-    left: "50%",
-    transform: "translate(-50%, -50%)",
-    width: { xs: "90%", sm: "80%", md: "70%" },
-    maxWidth: 900,
-    textAlign: "center",
-    pb: { xs: 2, md: 4 },
-  }}
->
+          sx={{
+            position: "absolute",
+            bottom: 0,
+            left: 0,
+            width: "100%",
+            height: 300,
+
+            backgroundColor: "rgba(20, 30, 45, 0.45)",
+            backdropFilter: "blur(10px)",
+            WebkitBackdropFilter: "blur(10px)",
+
+            px: { xs: 2, sm: 5, md: 7 },
+            py: { xs: 1.5, sm: 2, md: 2.5 },
+
+            borderTop: "1px solid rgba(255,255,255,0.12)",
+
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "center",
+            textAlign: "center",
+          }}
+        >
   <Typography
     sx={{
       color: colors.white,
       fontWeight: 800,
-      fontSize: { xs: "1.3rem", sm: "1.7rem", md: "3.5rem" },
+      fontSize: { xs: "1.3rem", sm: "1.7rem", md: "3rem" },
       fontFamily: "'Poppins', sans-serif",
       lineHeight: 1.15,
       mb: 1.5,
-      mt: 36,
       textShadow: "0 2px 10px rgba(0,0,0,0.5)",
     }}
   >
@@ -111,9 +157,9 @@ export default function FacilityManagementServices() {
     color: "rgba(255,255,255,0.88)",
     fontSize: { xs: "0.75rem", sm: "0.82rem", md: "1rem" },
     lineHeight: 1.65,
-    textAlign: "left",
+    textAlign: "justify",
     textShadow: "0 1px 6px rgba(0,0,0,0.5)",
-    mb: 4,
+    maxWidth: 700,
   }}
 >
   We provide comprehensive IT management services, including remote
@@ -126,7 +172,47 @@ export default function FacilityManagementServices() {
 
       {/* ── Service Cards ── */}
       <Box sx={{ backgroundColor: colors.white, py: { xs: 5, md: 6 } }}>
-        <Container maxWidth="lg">
+        <Container maxWidth="md">
+          {/* Section heading + underline with scroll-animated orange dot */}
+          <Box sx={{ mb: { xs: 4, md: 5 } }}>
+            <Typography
+              sx={{
+                color: colors.navy,
+                fontWeight: 800,
+                fontSize: { xs: "1.9rem", sm: "2.3rem", md: "2.6rem" },
+                fontFamily: "anton, sans-serif",
+                letterSpacing: 0.5,
+                mb: 1.5,
+              }}
+            >
+              Services We Offer
+            </Typography>
+
+            <Box
+              sx={{
+                position: "relative",
+                width: "100%",
+                height: 2,
+                backgroundColor: colors.border || "rgba(10,31,61,0.25)",
+              }}
+            >
+              <Box
+                sx={{
+                  position: "absolute",
+                  top: "50%",
+                  left: `${scrollPercent}%`,
+                  width: 12,
+                  height: 12,
+                  borderRadius: "50%",
+                  backgroundColor: colors.accent,
+                  transform: "translate(-50%, -50%)",
+                  transition: "left 0.15s ease-out",
+                  boxShadow: "0 0 6px rgba(0,0,0,0.15)",
+                }}
+              />
+            </Box>
+          </Box>
+
           <Grid container spacing={2}>
             {services.map((s) => (
               <Grid item xs={12} sm={6} md={4} key={s.title}>
@@ -147,6 +233,12 @@ export default function FacilityManagementServices() {
                 >
                   {/* Full-width cover image */}
                   <Box
+                    sx={{
+                      px: { xs: 1.5, md: 1 },
+                      py: { xs: 1.5, md: 1 },
+                    }}
+                  >
+                  <Box
                     component="img"
                     src={s.image}
                     alt={s.title}
@@ -155,16 +247,18 @@ export default function FacilityManagementServices() {
                       height: { xs: 150, md: 165 },
                       objectFit: "cover",
                       display: "block",
+                       borderRadius: "3px",
                     }}
                   />
+                  </Box>
 
                   {/* Card body */}
                   <Box sx={{ px: 2, pt: 1.5, pb: 2, flexGrow: 1 }}>
                     <Typography
                       sx={{
-                        color: "#000",
-                        fontWeight: 800,
-                        fontSize: { xs: "0.88rem", md: "1.1rem" },
+                        color: colors.navy,
+                        fontWeight: 700,
+                        fontSize: { xs: "0.95rem", md: "1.02rem" },
                         mb: 0.75,
                         lineHeight: 1.35,
                         fontFamily: "'Poppins', sans-serif",
@@ -175,8 +269,8 @@ export default function FacilityManagementServices() {
                     <Typography
                       sx={{
                         color: colors.grayText,
-                        fontSize: { xs: "0.76rem", md: "0.8rem" },
-                        lineHeight: 1.65,
+                        fontSize: { xs: "0.82rem", md: "0.86rem" },
+                        lineHeight: 1.6,
                       }}
                     >
                       {s.description}
@@ -189,52 +283,52 @@ export default function FacilityManagementServices() {
         </Container>
       </Box>
 
-      {/* ── Satisfaction Guarantee ── */}
-     <Box
-  sx={{
-    backgroundColor: "#6F7E8C",
-    py: { xs: 4, md: 5 },
-    px: { xs: 2, md: 5 },
-  }}
->
-  <Container maxWidth="lg">
-    <Box
-      sx={{
-        backgroundColor: "#D3D8DE",
-        borderRadius: "10px",
-        py: { xs: 4, md: 6 },
-        px: { xs: 2, md: 5 },
-        textAlign: "center",
-      }}
-    >
-      <Typography
+       {/* ── Satisfaction Guarantee ── */}
+      <Box
         sx={{
-          color: colors.navy,
-          fontWeight: 800,
-          fontSize: { xs: "1.4rem", sm: "1.8rem", md: "2.5rem" },
-          fontFamily: "'Poppins', sans-serif",
-          mb: 1.5,
+          backgroundColor: "#3a3f47",
+          py: { xs: 5, md: 5 },
         }}
       >
-        Satisfaction Guarantee
-      </Typography>
+        <Container maxWidth="xl">
+          <Box
+            sx={{
+              backgroundColor: "#b0b8c5",
+              borderRadius: "6px",
+              px: { xs: 3, md: 5 },
+              py: { xs: 4, md: 7 },
+            }}
+          >
+            <Typography
+              align="center"
+              sx={{
+                color: colors.navy,
+                fontWeight: 800,
+                fontSize: { xs: "1.3rem", md: "1.6rem" },
+                fontFamily: "'Poppins', sans-serif",
+                mb: 1.5,
+              }}
+            >
+              Satisfaction Guarantee
+            </Typography>
 
-      <Typography
-        sx={{
-          color: colors.navy,
-          fontSize: { xs: "0.85rem", sm: "0.95rem", md: "1rem" },
-          lineHeight: 1.75,
-          maxWidth: 850,
-          mx: "auto",
-        }}
-      >
-        iFathom guarantees reliable, high-quality IT solutions tailored to
-        your business needs, ensuring satisfaction through expert service
-        and support.
-      </Typography>
-    </Box>
-  </Container>
-</Box>
+            <Typography
+              align="center"
+              sx={{
+                color: colors.navy,
+                fontSize: { xs: "0.85rem", md: "0.92rem" },
+                lineHeight: 1.75,
+                maxWidth: 560,
+                mx: "auto",
+              }}
+            >
+              iFathom guarantees reliable, high-quality IT solutions tailored to
+              your business needs, ensuring satisfaction through expert service
+              and support.
+            </Typography>
+          </Box>
+        </Container>
+      </Box>
     </Box>
   );
 }

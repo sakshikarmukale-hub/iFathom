@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Box, Container, Grid, Typography } from "@mui/material";
 import colors from "../assets/colors";
 import networkHero from "../assets/network-hero.jpg";
@@ -30,6 +30,42 @@ const services = [
 ];
 
 export default function NetworkIntegrationServices() {
+  // Tracks overall page-scroll progress (0–100) to animate the orange dot
+  // along the "Services We Offer" underline — same pattern as Services.jsx /
+  // FacilityManagementServices.jsx.
+  const [scrollPercent, setScrollPercent] = useState(0);
+  const tickingRef = useRef(false);
+
+  useEffect(() => {
+    const updateScrollPercent = () => {
+      const scrollTop = window.scrollY || document.documentElement.scrollTop;
+      const docHeight =
+        document.documentElement.scrollHeight - window.innerHeight;
+      const percent =
+        docHeight > 0
+          ? Math.min(100, Math.max(0, (scrollTop / docHeight) * 100))
+          : 0;
+      setScrollPercent(percent);
+      tickingRef.current = false;
+    };
+
+    const onScroll = () => {
+      if (!tickingRef.current) {
+        tickingRef.current = true;
+        window.requestAnimationFrame(updateScrollPercent);
+      }
+    };
+
+    updateScrollPercent();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+    };
+  }, []);
+
   return (
     <Box>
       {/* ── Hero Banner ── */}
@@ -37,7 +73,7 @@ export default function NetworkIntegrationServices() {
         sx={{
           position: "relative",
           width: "100%",
-          height: { xs: 220, sm: 280, md: 480 },
+          height: { xs: 220, sm: 380, md: 480 },
           overflow: "hidden",
         }}
       >
@@ -64,15 +100,29 @@ export default function NetworkIntegrationServices() {
           }}
         />
 
-        {/* Text — center-left */}
+        {/* Text — bottom, left-aligned, frosted glass banner (FacilityManagementServices.jsx style) */}
         <Box
           sx={{
             position: "absolute",
-            top: "58%",
-            left: "50%",
-            transform: "translate(-50%, -50%)",
-            width: { xs: "90%", sm: "80%", md: "65%" },
-            maxWidth: 1100,
+            bottom: 0,
+            left: 0,
+            width: "100%",
+            height: 300,
+
+            backgroundColor: "rgba(20, 30, 45, 0.45)",
+            backdropFilter: "blur(10px)",
+            WebkitBackdropFilter: "blur(10px)",
+
+            px: { xs: 2, sm: 5, md: 7 },
+            py: { xs: 1.5, sm: 2, md: 2.5 },
+
+            borderTop: "1px solid rgba(255,255,255,0.12)",
+
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "flex-start",
+            justifyContent: "center",
+            textAlign: "left",
           }}
         >
           <Typography
@@ -83,8 +133,6 @@ export default function NetworkIntegrationServices() {
               fontFamily: "'Poppins', sans-serif",
               lineHeight: 1.15,
               mb: 1.5,
-              textAlign: "left",
-              mt: 25,
               textShadow: "0 2px 10px rgba(0,0,0,0.5)",
             }}
           >
@@ -98,6 +146,7 @@ export default function NetworkIntegrationServices() {
               lineHeight: 1.65,
               textAlign: "left",
               textShadow: "0 1px 6px rgba(0,0,0,0.5)",
+              maxWidth: 700,
             }}
           >
             iFathom offers robust internet security and communication solutions,
@@ -110,14 +159,13 @@ export default function NetworkIntegrationServices() {
 
       {/* ── Service Cards ── */}
       <Box sx={{ backgroundColor: colors.white, py: { xs: 5, md: 6 } }}>
-        <Container
-          maxWidth={false}
-          sx={{
-            width: "90%",
-            maxWidth: "900px",
-            mx: "auto",
-          }}
-        >
+        <Container maxWidth="md">
+          {/* Section heading + underline with scroll-animated orange dot */}
+         
+        
+
+            
+
           <Grid container spacing={2}>
             {services.map((s) => (
               <Grid item xs={12} sm={6} md={4} key={s.title}>
@@ -137,25 +185,33 @@ export default function NetworkIntegrationServices() {
                   }}
                 >
                   {/* Full-width cover image */}
-                  <Box
-                    component="img"
-                    src={s.image}
-                    alt={s.title}
-                    sx={{
-                      width: "100%",
-                      height: { xs: 150, md: 165 },
-                      objectFit: "cover",
-                      display: "block",
-                    }}
-                  />
-
+                  {/* Card image with padding */}
+<Box
+  sx={{
+    px: { xs: 1.5, md: 1 },
+    py: { xs: 1.5, md: 1 },
+  }}
+>
+  <Box
+    component="img"
+    src={s.image}
+    alt={s.title}
+    sx={{
+      width: "100%",
+      height: { xs: 150, md: 165 },
+      objectFit: "cover",
+      display: "block",
+      borderRadius: "3px",
+    }}
+  />
+</Box>
                   {/* Card body */}
                   <Box sx={{ px: 2, pt: 1.5, pb: 2, flexGrow: 1 }}>
                     <Typography
                       sx={{
-                        color: "#000",
+                        color: colors.navy,
                         fontWeight: 700,
-                        fontSize: { xs: "0.88rem", md: "1.1rem" },
+                        fontSize: { xs: "0.95rem", md: "1.02rem" },
                         mb: 0.75,
                         lineHeight: 1.35,
                         fontFamily: "'Poppins', sans-serif",
@@ -167,8 +223,8 @@ export default function NetworkIntegrationServices() {
                     <Typography
                       sx={{
                         color: colors.grayText,
-                        fontSize: { xs: "0.76rem", md: "0.8rem" },
-                        lineHeight: 1.65,
+                        fontSize: { xs: "0.82rem", md: "0.86rem" },
+                        lineHeight: 1.6,
                       }}
                     >
                       {s.description}
@@ -182,59 +238,51 @@ export default function NetworkIntegrationServices() {
       </Box>
 
       {/* ── Satisfaction Guarantee ── */}
-     <Box
-  sx={{
-    backgroundColor: "#6F7E8C",
-    py: { xs: 3, md: 5 },
-    px: { xs: 2, md: 5 },
-  }}
->
-  <Container
-    maxWidth={false}
-    sx={{
-      width: { xs: "95%", sm: "90%", md: "90%" },
-      maxWidth: "1700px",
-      mx: "auto",
-      p: 0,
-    }}
-  >
-    <Box
-      sx={{
-        backgroundColor: "#D3D8DE",
-        borderRadius: "10px",
-        py: { xs: 4, md: 6 },
-        px: { xs: 2, md: 5 },
-        textAlign: "center",
-      }}
-    >
-      <Typography
+      <Box
         sx={{
-          color: colors.navy,
-          fontWeight: 800,
-          fontSize: { xs: "1.5rem", sm: "2rem", md: "2.5rem" },
-          fontFamily: "'Poppins', sans-serif",
-          mb: 1.5,
+          backgroundColor: "#3a3f47",
+          py: { xs: 5, md: 5 },
         }}
       >
-        Satisfaction Guarantee
-      </Typography>
+        <Container maxWidth="xl">
+          <Box
+            sx={{
+              backgroundColor: "#b0b8c5",
+              borderRadius: "6px",
+              px: { xs: 3, md: 5 },
+              py: { xs: 4, md: 7 },
+            }}
+          >
+            <Typography
+              align="center"
+              sx={{
+                color: colors.navy,
+                fontWeight: 800,
+                fontSize: { xs: "1.3rem", md: "1.6rem" },
+                fontFamily: "'Poppins', sans-serif",
+                mb: 1.5,
+              }}
+            >
+              Satisfaction Guarantee
+            </Typography>
 
-      <Typography
-        sx={{
-          color: colors.navy,
-          fontSize: { xs: "0.85rem", sm: "0.95rem", md: "1rem" },
-          lineHeight: 1.75,
-          maxWidth: 850,
-          mx: "auto",
-        }}
-      >
-        iFathom guarantees reliable, high-quality IT solutions tailored to
-        your business needs, ensuring satisfaction through expert service
-        and support.
-      </Typography>
-    </Box>
-  </Container>
-</Box>
+            <Typography
+              align="center"
+              sx={{
+                color: colors.navy,
+                fontSize: { xs: "0.85rem", md: "0.92rem" },
+                lineHeight: 1.75,
+                maxWidth: 560,
+                mx: "auto",
+              }}
+            >
+              iFathom guarantees reliable, high-quality IT solutions tailored to
+              your business needs, ensuring satisfaction through expert service
+              and support.
+            </Typography>
+          </Box>
+        </Container>
+      </Box>
     </Box>
   );
 }

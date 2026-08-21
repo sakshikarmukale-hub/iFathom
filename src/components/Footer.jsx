@@ -5,26 +5,14 @@ import {
   Container,
   Grid,
   Typography,
-  Button,
   Stack,
   Divider,
-  Chip,
 } from "@mui/material";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
-import EmailIcon from "@mui/icons-material/Email";
-import PhoneIcon from "@mui/icons-material/Phone";
-import LocationOnIcon from "@mui/icons-material/LocationOn";
 import colors from "../assets/colors";
 
-const openings = [
-  "Python",
-  "JavaScript",
-  "Java",
-  "Go",
-  "iOS Swift",
-  "C++",
-  "Verilog",
-];
+const openingsColumnOne = ["Python", "Javascript", "Java", "Go"];
+const openingsColumnTwo = ["iOS Swift", "C++", "Verilog"];
 
 const locations = [
   {
@@ -77,347 +65,390 @@ const legalLinks = [
   "Terms and Conditions",
 ];
 
+const headingFont = "anton, sans-serif";
+
 export default function Footer() {
   return (
-    <Box component="footer" sx={{ backgroundColor: colors.navy }}>
-      {/* ── Work at iFathom Banner ── */}
-      <Box
-        sx={{
-          background: `linear-gradient(135deg, ${colors.navyDark} 0%, #0F2847 100%)`,
-          borderBottom: `1px solid ${colors.navyMid}`,
-          py: { xs: 5, md: 7 },
-        }}
-      >
+    <Box component="footer">
+      {/* ── Work at iFathom Banner (white) ── */}
+      <Box sx={{ backgroundColor: colors.white, py: { xs: 4, md: 4.5 } }}>
         <Container maxWidth="lg">
-          <Grid container spacing={4} alignItems="center">
-            <Grid item xs={12} md={8}>
+          <Grid container spacing={{ xs: 3, md: 2 }}>
+            {/* Left: heading + description */}
+            <Grid item xs={12} md={7}>
               <Typography
                 sx={{
-                  color: colors.white,
+                  color: colors.navy,
                   fontWeight: 800,
-                  fontSize: { xs: "1.4rem", md: "1.75rem" },
-                  mb: 0.75,
-                  fontFamily: "'Poppins', sans-serif",
+                  fontSize: { xs: "1.9rem", sm: "2.2rem", md: "2.6rem" },
+                  fontFamily: headingFont,
+                  lineHeight: 1.2,
+                  mb: 1.5,
                 }}
               >
                 Work at iFathom!
               </Typography>
               <Typography
                 sx={{
-                  color: "rgba(255,255,255,0.7)",
-                  fontSize: { xs: "0.93rem", md: "1rem" },
-                  mb: 3,
-                  maxWidth: 540,
-                  lineHeight: 1.7,
+                  color: colors.navy,
+                  fontSize: { xs: "0.95rem", md: "1.02rem" },
+                  lineHeight: 1.6,
+                  maxWidth: 420,
                 }}
               >
                 Innovate, grow, and make an impact with a team that values
                 creativity and collaboration. Build what's next!
               </Typography>
+            </Grid>
+
+            {/* Right: current openings + join button */}
+            <Grid item xs={12} md={5}>
               <Typography
+                align="center"
                 sx={{
-                  color: colors.accent,
+                  color: colors.navy,
                   fontWeight: 700,
-                  fontSize: "0.8rem",
-                  mb: 1.5,
-                  textTransform: "uppercase",
-                  letterSpacing: 1.2,
+                  fontSize: { xs: "1.1rem", md: "1.25rem" },
+                  fontFamily: headingFont,
+                  letterSpacing: 0.3,
+                  mb: 1,
                 }}
               >
                 Current Openings for
               </Typography>
-              <Stack direction="row" flexWrap="wrap" gap={1}>
-                {openings.map((role) => (
-                  <Chip
-                    key={role}
-                    label={role}
-                    size="small"
+
+              <Grid container sx={{ mb: 2, justifyContent: "center" }}>
+                <Grid item xs="auto">
+                  <Box
+                    component="ul"
                     sx={{
-                      color: "rgba(255,255,255,0.85)",
-                      backgroundColor: "rgba(255,255,255,0.07)",
-                      border: `1px solid rgba(255,255,255,0.15)`,
-                      fontSize: "0.78rem",
-                      height: 28,
+                      m: 0,
+                      pl: 2.5,
+                      color: colors.navy,
+                      fontSize: "0.92rem",
+                      lineHeight: 1.6,
                     }}
-                  />
-                ))}
-              </Stack>
-            </Grid>
-            <Grid
-              item
-              xs={12}
-              md={4}
-              sx={{
-                display: "flex",
-                justifyContent: { xs: "flex-start", md: "flex-end" },
-              }}
-            >
-              <Button
-                component={Link}
-                to="/careers"
-                variant="contained"
-                endIcon={<ArrowForwardIcon />}
-                sx={{
-                  backgroundColor: colors.accent,
-                  color: colors.white,
-                  fontWeight: 700,
-                  px: { xs: 3.5, md: 4.5 },
-                  py: 1.5,
-                  borderRadius: "6px",
-                  textTransform: "none",
-                  fontSize: "1rem",
-                  boxShadow: "none",
-                  "&:hover": {
-                    backgroundColor: colors.accentDark,
-                    boxShadow: "0 4px 14px rgba(232,129,58,0.4)",
-                  },
-                }}
-              >
-                Join Us Now
-              </Button>
+                  >
+                    {openingsColumnOne.map((role) => (
+                      <li key={role}>{role}</li>
+                    ))}
+                  </Box>
+                </Grid>
+                <Grid item xs="auto" sx={{ ml: { xs: 4, sm: 6 } }}>
+                  <Box
+                    component="ul"
+                    sx={{
+                      m: 0,
+                      pl: 2.5,
+                      color: colors.navy,
+                      fontSize: "0.92rem",
+                      lineHeight: 1.6,
+                    }}
+                  >
+                    {openingsColumnTwo.map((role) => (
+                      <li key={role}>{role}</li>
+                    ))}
+                  </Box>
+                </Grid>
+              </Grid>
+
+              {/* Composite "Join Us NOW" button */}
+              <Box sx={{ display: "flex", justifyContent: "center" }}>
+                <Box
+                  component={Link}
+                  to="/careers"
+                  sx={{
+                    display: "flex",
+                    alignItems: "stretch",
+                    textDecoration: "none",
+                    borderRadius: "4px",
+                    overflow: "hidden",
+                    boxShadow: "0 2px 8px rgba(10,31,61,0.15)",
+                  }}
+                >
+                  <Box
+                    sx={{
+                      backgroundColor: colors.navy,
+                      color: colors.white,
+                      px: 2.5,
+                      py: 1.25,
+                      display: "flex",
+                      flexDirection: "column",
+                      justifyContent: "center",
+                    }}
+                  >
+                    <Typography
+                      sx={{
+                        fontFamily: headingFont,
+                        fontWeight: 700,
+                        fontSize: "0.95rem",
+                        lineHeight: 1.2,
+                      }}
+                    >
+                      Join Us
+                    </Typography>
+                    <Typography
+                      sx={{
+                        fontFamily: headingFont,
+                        fontWeight: 800,
+                        fontSize: "1.3rem",
+                        lineHeight: 1.2,
+                      }}
+                    >
+                      NOW
+                    </Typography>
+                  </Box>
+                  <Box
+                    sx={{
+                      backgroundColor: colors.accent,
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      px: 4,
+                      transition: "background-color 0.2s",
+                      "&:hover": {
+                        backgroundColor: colors.accentDark,
+                      },
+                    }}
+                  >
+                    <ArrowForwardIcon sx={{ color: colors.white, fontSize: "1.6rem" }} />
+                  </Box>
+                </Box>
+              </Box>
             </Grid>
           </Grid>
         </Container>
       </Box>
 
-      {/* ── Our Locations ── */}
-      <Container maxWidth="lg" sx={{ py: { xs: 6, md: 8 } }}>
-        <Typography
-          sx={{
-            color: colors.white,
-            fontWeight: 800,
-            fontSize: { xs: "1.25rem", md: "1.5rem" },
-            mb: 4,
-            fontFamily: "'Poppins', sans-serif",
-          }}
-        >
-          Our Locations
-        </Typography>
-        <Grid container spacing={4}>
-          {locations.map((loc) => (
-            <Grid item xs={12} sm={6} md={4} key={loc.country}>
-              <Box
-                sx={{
-                  borderLeft: `3px solid ${colors.accent}`,
-                  pl: 2.5,
-                }}
-              >
+      {/* ── Dark navy section: Our Locations + Links + Copyright ── */}
+      <Box sx={{ backgroundColor: colors.navy }}>
+        {/* Our Locations */}
+        <Container maxWidth="lg" sx={{ py: { xs: 4.5, md: 5.5 } }}>
+          <Typography
+            align="center"
+            sx={{
+              color: colors.white,
+              fontWeight: 800,
+              fontSize: { xs: "1.6rem", md: "2rem" },
+              fontFamily: headingFont,
+              mb: 3.5,
+            }}
+          >
+            Our Locations
+          </Typography>
+
+          <Grid container spacing={3}>
+            {locations.map((loc) => (
+              <Grid item xs={12} sm={6} md={4} key={loc.country}>
                 <Typography
                   sx={{
-                    color: colors.accent,
+                    color: colors.white,
                     fontWeight: 700,
-                    fontSize: "0.78rem",
-                    letterSpacing: 1.5,
-                    mb: 0.75,
-                    textTransform: "uppercase",
+                    fontSize: "0.95rem",
+                    letterSpacing: 0.5,
+                    mb: 1,
                   }}
                 >
                   {loc.country}
                 </Typography>
+
                 {loc.company && (
                   <Typography
                     sx={{
-                      color: colors.white,
+                      color: "rgba(255,255,255,0.85)",
                       fontWeight: 600,
-                      fontSize: "0.95rem",
-                      mb: 0.5,
+                      fontSize: "0.88rem",
+                      mb: 0.25,
                     }}
                   >
                     {loc.company}
                   </Typography>
                 )}
-                <Stack direction="row" spacing={1} alignItems="flex-start" sx={{ mb: 1 }}>
-                  <LocationOnIcon
-                    sx={{
-                      color: "rgba(255,255,255,0.4)",
-                      fontSize: "1rem",
-                      mt: "2px",
-                      flexShrink: 0,
-                    }}
-                  />
-                  <Box>
-                    {loc.address.map((line, i) => (
-                      <Typography
-                        key={i}
-                        sx={{
-                          color: "rgba(255,255,255,0.65)",
-                          fontSize: "0.86rem",
-                          lineHeight: 1.65,
-                        }}
-                      >
-                        {line}
-                      </Typography>
-                    ))}
-                  </Box>
-                </Stack>
-                <Stack direction="row" spacing={1} alignItems="center" sx={{ mb: 1 }}>
-                  <EmailIcon sx={{ color: "rgba(255,255,255,0.4)", fontSize: "0.95rem" }} />
+
+                <Box sx={{ mb: 1 }}>
+                  {loc.address.map((line, i) => (
+                    <Typography
+                      key={i}
+                      sx={{
+                        color: "rgba(255,255,255,0.85)",
+                        fontSize: "0.88rem",
+                        lineHeight: 1.4,
+                      }}
+                    >
+                      {line}
+                    </Typography>
+                  ))}
+                </Box>
+
+                <Typography
+                  sx={{
+                    color: "rgba(255,255,255,0.85)",
+                    fontSize: "0.88rem",
+                    mb: 1,
+                  }}
+                >
+                  Email ID:{" "}
                   <Box
                     component="a"
                     href={`mailto:${loc.email}`}
                     sx={{
-                      color: colors.accent,
-                      fontSize: "0.86rem",
+                      color: "rgba(255,255,255,0.85)",
                       textDecoration: "none",
-                      "&:hover": { textDecoration: "underline" },
+                      "&:hover": { color: colors.accent },
                     }}
                   >
                     {loc.email}
                   </Box>
-                </Stack>
+                </Typography>
+
                 <Box
                   component="a"
                   href={loc.mapUrl}
                   target="_blank"
                   rel="noreferrer"
                   sx={{
-                    color: "rgba(255,255,255,0.6)",
-                    fontSize: "0.82rem",
-                    textDecoration: "none",
-                    borderBottom: "1px solid rgba(255,255,255,0.3)",
-                    display: "inline-block",
-                    mt: 0.5,
-                    "&:hover": { color: colors.accent, borderColor: colors.accent },
+                    color: "rgba(255,255,255,0.85)",
+                    fontSize: "0.85rem",
+                    textDecoration: "underline",
+                    textUnderlineOffset: "3px",
+                    "&:hover": { color: colors.accent },
                   }}
                 >
-                  See on Map →
+                  See on Map ›
                 </Box>
-              </Box>
+              </Grid>
+            ))}
+          </Grid>
+        </Container>
+
+        <Container maxWidth="lg">
+          <Divider sx={{ borderColor: "rgba(255,255,255,0.15)" }} />
+        </Container>
+
+        {/* Links */}
+        <Container maxWidth="lg" sx={{ py: { xs: 3.5, md: 4 } }}>
+          <Grid container spacing={3} justifyContent="center">
+            {/* Useful Links */}
+            <Grid item xs={12} sm={4}>
+              <Typography
+                sx={{
+                  color: colors.white,
+                  fontWeight: 700,
+                  fontSize: "0.8rem",
+                  letterSpacing: 1.2,
+                  mb: 1.25,
+                  textTransform: "uppercase",
+                }}
+              >
+                Useful Links
+              </Typography>
+              <Stack spacing={1}>
+                {usefulLinks.map((l) => (
+                  <Box
+                    key={l.label}
+                    component={Link}
+                    to={l.to}
+                    sx={{
+                      color: "rgba(255,255,255,0.85)",
+                      fontSize: "0.9rem",
+                      textDecoration: "none",
+                      transition: "color 0.2s",
+                      "&:hover": { color: colors.accent },
+                    }}
+                  >
+                    {l.label}
+                  </Box>
+                ))}
+              </Stack>
             </Grid>
-          ))}
-        </Grid>
-      </Container>
 
-      <Divider sx={{ borderColor: colors.navyMid }} />
+            {/* Legal */}
+            <Grid item xs={12} sm={4}>
+              <Typography
+                sx={{
+                  color: colors.white,
+                  fontWeight: 700,
+                  fontSize: "0.8rem",
+                  letterSpacing: 1.2,
+                  mb: 1.25,
+                  textTransform: "uppercase",
+                }}
+              >
+                Legal &amp; Compliances
+              </Typography>
+              <Stack spacing={1}>
+                {legalLinks.map((l) => (
+                  <Typography
+                    key={l}
+                    sx={{
+                      color: "rgba(255,255,255,0.85)",
+                      fontSize: "0.9rem",
+                      cursor: "pointer",
+                      transition: "color 0.2s",
+                      "&:hover": { color: colors.accent },
+                    }}
+                  >
+                    {l}
+                  </Typography>
+                ))}
+              </Stack>
+            </Grid>
 
-      {/* ── Links / Legal / Contact ── */}
-      <Container maxWidth="lg" sx={{ py: { xs: 5, md: 7 } }}>
-        <Grid container spacing={4}>
-          {/* Useful Links */}
-          <Grid item xs={12} sm={4}>
-            <Typography
-              sx={{
-                color: colors.white,
-                fontWeight: 700,
-                fontSize: "0.82rem",
-                letterSpacing: 1.5,
-                mb: 2.5,
-                textTransform: "uppercase",
-              }}
-            >
-              Useful Links
-            </Typography>
-            <Stack spacing={1.25}>
-              {usefulLinks.map((l) => (
+            {/* Contact */}
+            <Grid item xs={12} sm={4}>
+              <Typography
+                sx={{
+                  color: colors.white,
+                  fontWeight: 700,
+                  fontSize: "0.8rem",
+                  letterSpacing: 1.2,
+                  mb: 1.25,
+                  textTransform: "uppercase",
+                }}
+              >
+                Contact
+              </Typography>
+              <Stack spacing={1}>
                 <Box
-                  key={l.label}
-                  component={Link}
-                  to={l.to}
+                  component="a"
+                  href="mailto:info@ifathomgroup.com"
                   sx={{
-                    color: "rgba(255,255,255,0.65)",
+                    color: "rgba(255,255,255,0.85)",
                     fontSize: "0.9rem",
                     textDecoration: "none",
                     transition: "color 0.2s",
                     "&:hover": { color: colors.accent },
                   }}
                 >
-                  {l.label}
-                </Box>
-              ))}
-            </Stack>
-          </Grid>
-
-          {/* Legal */}
-          <Grid item xs={12} sm={4}>
-            <Typography
-              sx={{
-                color: colors.white,
-                fontWeight: 700,
-                fontSize: "0.82rem",
-                letterSpacing: 1.5,
-                mb: 2.5,
-                textTransform: "uppercase",
-              }}
-            >
-              Legal &amp; Compliances
-            </Typography>
-            <Stack spacing={1.25}>
-              {legalLinks.map((l) => (
-                <Typography
-                  key={l}
-                  sx={{
-                    color: "rgba(255,255,255,0.65)",
-                    fontSize: "0.9rem",
-                    cursor: "pointer",
-                    "&:hover": { color: colors.accent },
-                  }}
-                >
-                  {l}
-                </Typography>
-              ))}
-            </Stack>
-          </Grid>
-
-          {/* Contact */}
-          <Grid item xs={12} sm={4}>
-            <Typography
-              sx={{
-                color: colors.white,
-                fontWeight: 700,
-                fontSize: "0.82rem",
-                letterSpacing: 1.5,
-                mb: 2.5,
-                textTransform: "uppercase",
-              }}
-            >
-              Contact
-            </Typography>
-            <Stack spacing={1.5}>
-              <Stack direction="row" spacing={1.5} alignItems="center">
-                <EmailIcon sx={{ color: colors.accent, fontSize: "1.1rem" }} />
-                <Box
-                  component="a"
-                  href="mailto:info@ifathomgroup.com"
-                  sx={{
-                    color: "rgba(255,255,255,0.65)",
-                    fontSize: "0.9rem",
-                    textDecoration: "none",
-                    "&:hover": { color: colors.accent },
-                  }}
-                >
                   info@ifathomgroup.com
                 </Box>
-              </Stack>
-              <Stack direction="row" spacing={1.5} alignItems="center">
-                <PhoneIcon sx={{ color: colors.accent, fontSize: "1.1rem" }} />
                 <Box
                   component="a"
                   href="tel:+919820663764"
                   sx={{
-                    color: "rgba(255,255,255,0.65)",
+                    color: "rgba(255,255,255,0.85)",
                     fontSize: "0.9rem",
                     textDecoration: "none",
+                    transition: "color 0.2s",
                     "&:hover": { color: colors.accent },
                   }}
                 >
                   +91 9820663764
                 </Box>
               </Stack>
-            </Stack>
+            </Grid>
           </Grid>
-        </Grid>
-      </Container>
+        </Container>
 
-      <Divider sx={{ borderColor: colors.navyMid }} />
-
-      {/* ── Copyright ── */}
-      <Box sx={{ py: 2.5 }}>
-        <Typography
-          align="center"
-          sx={{ color: "rgba(255,255,255,0.45)", fontSize: "0.82rem" }}
-        >
-          © Copyright 2025 iFathom Group. All rights reserved.
-        </Typography>
+        {/* Copyright */}
+        <Box sx={{ pb: 2.5 }}>
+          <Typography
+            align="center"
+            sx={{ color: "rgba(255,255,255,0.6)", fontSize: "0.82rem" }}
+          >
+            © Copyright 2025 iFathom Group. All rights reserved.
+          </Typography>
+        </Box>
       </Box>
     </Box>
   );
