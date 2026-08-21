@@ -159,13 +159,8 @@ export default function NetworkIntegrationServices() {
 
       {/* ── Service Cards ── */}
       <Box sx={{ backgroundColor: colors.white, py: { xs: 5, md: 6 } }}>
-        <Container maxWidth="md">
+        <Container maxWidth="lg">
           {/* Section heading + underline with scroll-animated orange dot */}
-
-
-
-
-
           <Grid container spacing={2}>
             {services.map((s) => (
               <Grid item xs={12} sm={6} md={4} key={s.title}>
@@ -240,14 +235,14 @@ export default function NetworkIntegrationServices() {
       {/* ── Satisfaction Guarantee ── */}
       <Box
         sx={{
-          backgroundColor: "#6B7986",
+          backgroundColor: "#677695",
           py: { xs: 5, md: 5 },
         }}
       >
         <Container maxWidth="xl">
           <Box
             sx={{
-              backgroundColor: "#FFFFFFA6",
+              backgroundColor: "#c8ced6",
               borderRadius: "6px",
               maxWidth: "1290px",
               mx: "auto",
@@ -261,8 +256,9 @@ export default function NetworkIntegrationServices() {
                 color: colors.navy,
                 fontWeight: 800,
                 fontSize: { xs: "1.3rem", md: "2.5rem" },
-                fontFamily: "'Poppins', sans-serif",
+                fontFamily: "anton, sans-serif",
                 mb: 1.5,
+                transform: "scaleY(1.3)",
               }}
             >
               Satisfaction Guarantee
@@ -274,7 +270,7 @@ export default function NetworkIntegrationServices() {
                 color: colors.navy,
                 fontSize: { xs: "0.85rem", md: "0.92rem" },
                 lineHeight: 1.75,
-                maxWidth: 560,
+                maxWidth: 700,
                 mx: "auto",
               }}
             >

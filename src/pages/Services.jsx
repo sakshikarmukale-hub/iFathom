@@ -148,7 +148,7 @@ export default function Services() {
               textShadow: "0 2px 12px rgba(0,0,0,0.5)",
               ml: { xs: 0, sm: 15, md: 33 },
               mt: 2,
-              transform: "scaleY(1.5)",
+              transform: "scaleY(1.4)",
             }}
           >
             Services
@@ -165,7 +165,7 @@ export default function Services() {
               ml: { xs: 0, sm: 15, md: 33 },
               mt: 5,
               transform: "scaleY(1.2)",
-              maxWidth: 700,
+              maxWidth: 800,
               letterSpacing: 1,
             }}
           >
@@ -181,7 +181,7 @@ export default function Services() {
 
       {/* ── Services We Offer ── */}
       <Box sx={{ backgroundColor: colors.white, py: { xs: 4, md: 5 } }}>
-        <Container maxWidth="md">
+        <Container maxWidth="lg">
           {/* Section heading */}
           <Box sx={{ mb: { xs: 3, md: 4 } }}>
             <Typography
@@ -286,7 +286,7 @@ export default function Services() {
                           md: "0.95rem",
                         },
                         lineHeight: 1.4,
-                        fontFamily: "'Poppins', sans-serif",
+                        fontFamily: "anton, sans-serif",
                       }}
                     >
                       {s.description}
@@ -323,8 +323,9 @@ export default function Services() {
                 color: colors.navy,
                 fontWeight: 800,
                 fontSize: { xs: "1.3rem", md: "2.5rem" },
-                fontFamily: "'Poppins', sans-serif",
+                fontFamily: "anton, sans-serif",
                 mb: 1.5,
+                transform: "scaleY(1.3)",
               }}
             >
               Satisfaction Guarantee
@@ -336,7 +337,7 @@ export default function Services() {
                 color: colors.navy,
                 fontSize: { xs: "0.85rem", md: "0.92rem" },
                 lineHeight: 1.75,
-                maxWidth: 560,
+                maxWidth: 700,
                 mx: "auto",
               }}
             >
