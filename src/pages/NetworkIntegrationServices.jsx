@@ -120,16 +120,16 @@ export default function NetworkIntegrationServices() {
 
             display: "flex",
             flexDirection: "column",
-            alignItems: "flex-start",
+            alignItems: "center",
             justifyContent: "center",
-            textAlign: "left",
+            textAlign: "center",
           }}
         >
           <Typography
             sx={{
               color: colors.white,
               fontWeight: 800,
-              fontSize: { xs: "1.4rem", sm: "1.8rem", md: "3.5rem" },
+              fontSize: { xs: "1.5rem", sm: "2rem", md: "4rem" },
               fontFamily: "'Poppins', sans-serif",
               lineHeight: 1.15,
               mb: 1.5,
@@ -144,7 +144,7 @@ export default function NetworkIntegrationServices() {
               color: "rgba(255,255,255,0.88)",
               fontSize: { xs: "0.75rem", sm: "0.82rem", md: "1rem" },
               lineHeight: 1.65,
-              textAlign: "left",
+              textAlign: "center",
               textShadow: "0 1px 6px rgba(0,0,0,0.5)",
               maxWidth: 700,
             }}
@@ -161,10 +161,10 @@ export default function NetworkIntegrationServices() {
       <Box sx={{ backgroundColor: colors.white, py: { xs: 5, md: 6 } }}>
         <Container maxWidth="md">
           {/* Section heading + underline with scroll-animated orange dot */}
-         
-        
 
-            
+
+
+
 
           <Grid container spacing={2}>
             {services.map((s) => (
@@ -186,25 +186,25 @@ export default function NetworkIntegrationServices() {
                 >
                   {/* Full-width cover image */}
                   {/* Card image with padding */}
-<Box
-  sx={{
-    px: { xs: 1.5, md: 1 },
-    py: { xs: 1.5, md: 1 },
-  }}
->
-  <Box
-    component="img"
-    src={s.image}
-    alt={s.title}
-    sx={{
-      width: "100%",
-      height: { xs: 150, md: 165 },
-      objectFit: "cover",
-      display: "block",
-      borderRadius: "3px",
-    }}
-  />
-</Box>
+                  <Box
+                    sx={{
+                      px: { xs: 1.5, md: 1 },
+                      py: { xs: 1.5, md: 1 },
+                    }}
+                  >
+                    <Box
+                      component="img"
+                      src={s.image}
+                      alt={s.title}
+                      sx={{
+                        width: "100%",
+                        height: { xs: 150, md: 165 },
+                        objectFit: "cover",
+                        display: "block",
+                        borderRadius: "3px",
+                      }}
+                    />
+                  </Box>
                   {/* Card body */}
                   <Box sx={{ px: 2, pt: 1.5, pb: 2, flexGrow: 1 }}>
                     <Typography
@@ -238,53 +238,53 @@ export default function NetworkIntegrationServices() {
       </Box>
 
       {/* ── Satisfaction Guarantee ── */}
-         <Box
-  sx={{
-    backgroundColor: "#6B7986",
-    py: { xs: 5, md: 5 },
-  }}
->
-  <Container maxWidth="xl">
-    <Box
-      sx={{
-        backgroundColor: "#FFFFFFA6",
-        borderRadius: "6px",
-        maxWidth: "1290px",
-        mx: "auto",
-        px: { xs: 3, md: 5 },
-        py: { xs: 4, md: 7 },
-      }}
-    >
-      <Typography
-        align="center"
+      <Box
         sx={{
-          color: colors.navy,
-          fontWeight: 800,
-          fontSize: { xs: "1.3rem", md: "2.5rem" },
-          fontFamily: "'Poppins', sans-serif",
-          mb: 1.5,
+          backgroundColor: "#6B7986",
+          py: { xs: 5, md: 5 },
         }}
       >
-        Satisfaction Guarantee
-      </Typography>
+        <Container maxWidth="xl">
+          <Box
+            sx={{
+              backgroundColor: "#FFFFFFA6",
+              borderRadius: "6px",
+              maxWidth: "1290px",
+              mx: "auto",
+              px: { xs: 3, md: 5 },
+              py: { xs: 4, md: 7 },
+            }}
+          >
+            <Typography
+              align="center"
+              sx={{
+                color: colors.navy,
+                fontWeight: 800,
+                fontSize: { xs: "1.3rem", md: "2.5rem" },
+                fontFamily: "'Poppins', sans-serif",
+                mb: 1.5,
+              }}
+            >
+              Satisfaction Guarantee
+            </Typography>
 
-      <Typography
-        align="center"
-        sx={{
-          color: colors.navy,
-          fontSize: { xs: "0.85rem", md: "0.92rem" },
-          lineHeight: 1.75,
-          maxWidth: 560,
-          mx: "auto",
-        }}
-      >
-        iFathom guarantees reliable, high-quality IT solutions tailored to
-        your business needs, ensuring satisfaction through expert service
-        and support.
-      </Typography>
-    </Box>
-  </Container>
-</Box>
+            <Typography
+              align="center"
+              sx={{
+                color: colors.navy,
+                fontSize: { xs: "0.85rem", md: "0.92rem" },
+                lineHeight: 1.75,
+                maxWidth: 560,
+                mx: "auto",
+              }}
+            >
+              iFathom guarantees reliable, high-quality IT solutions tailored to
+              your business needs, ensuring satisfaction through expert service
+              and support.
+            </Typography>
+          </Box>
+        </Container>
+      </Box>
     </Box>
   );
 }

@@ -107,15 +107,15 @@ export default function FacilityManagementServices() {
         />
         {/* Dark gradient overlay */}
         <Box
-  sx={{
-    position: "absolute",
-    inset: 0,
-    background:
-      "linear-gradient(to top, rgba(45, 78, 101, 0.82) 0%, rgba(45, 78, 101, 0.55) 55%, rgba(20, 40, 55, 0.25) 100%)",
-  }}
-/>
-       {/* Text — bottom, centered, frosted glass banner (Services.jsx style) */}
-<Box
+          sx={{
+            position: "absolute",
+            inset: 0,
+            background:
+              "linear-gradient(to top, rgba(45, 78, 101, 0.82) 0%, rgba(45, 78, 101, 0.55) 55%, rgba(20, 40, 55, 0.25) 100%)",
+          }}
+        />
+        {/* Text — bottom, centered, frosted glass banner (Services.jsx style) */}
+        <Box
           sx={{
             position: "absolute",
             bottom: 0,
@@ -139,36 +139,36 @@ export default function FacilityManagementServices() {
             textAlign: "center",
           }}
         >
-  <Typography
-    sx={{
-      color: colors.white,
-      fontWeight: 800,
-      fontSize: { xs: "1.3rem", sm: "1.7rem", md: "3.5rem" },
-      fontFamily: "'Poppins', sans-serif",
-      lineHeight: 1.15,
-      mb: 1.5,
-      textShadow: "0 2px 10px rgba(0,0,0,0.5)",
-    }}
-  >
-    Facility Management Services
-  </Typography>
-<Typography
-  sx={{
-    color: "rgba(255,255,255,0.88)",
-    fontSize: { xs: "0.75rem", sm: "0.82rem", md: "1rem" },
-    lineHeight: 1.65,
-    textAlign: "justify",
-    textShadow: "0 1px 6px rgba(0,0,0,0.5)",
-    maxWidth: 700,
-  }}
->
-  We provide comprehensive IT management services, including remote
-  troubleshooting, software upgrades, asset tracking, infrastructure
-  maintenance, and data security, ensuring seamless operations and
-  optimal performance for your organization.
-</Typography>
-</Box>
-</Box>
+          <Typography
+            sx={{
+              color: colors.white,
+              fontWeight: 800,
+              fontSize: { xs: "1.5rem", sm: "2rem", md: "4rem" },
+              fontFamily: "'Poppins', sans-serif",
+              lineHeight: 1.15,
+              mb: 1.5,
+              textShadow: "0 2px 10px rgba(0,0,0,0.5)",
+            }}
+          >
+            Facility Management Services
+          </Typography>
+          <Typography
+            sx={{
+              color: "rgba(255,255,255,0.88)",
+              fontSize: { xs: "0.75rem", sm: "0.82rem", md: "1rem" },
+              lineHeight: 1.65,
+              textAlign: "justify",
+              textShadow: "0 1px 6px rgba(0,0,0,0.5)",
+              maxWidth: 700,
+            }}
+          >
+            We provide comprehensive IT management services, including remote
+            troubleshooting, software upgrades, asset tracking, infrastructure
+            maintenance, and data security, ensuring seamless operations and
+            optimal performance for your organization.
+          </Typography>
+        </Box>
+      </Box>
 
       {/* ── Service Cards ── */}
       <Box sx={{ backgroundColor: colors.white, py: { xs: 5, md: 6 } }}>
@@ -238,18 +238,18 @@ export default function FacilityManagementServices() {
                       py: { xs: 1.5, md: 1 },
                     }}
                   >
-                  <Box
-                    component="img"
-                    src={s.image}
-                    alt={s.title}
-                    sx={{
-                      width: "100%",
-                      height: { xs: 150, md: 165 },
-                      objectFit: "cover",
-                      display: "block",
-                       borderRadius: "3px",
-                    }}
-                  />
+                    <Box
+                      component="img"
+                      src={s.image}
+                      alt={s.title}
+                      sx={{
+                        width: "100%",
+                        height: { xs: 150, md: 165 },
+                        objectFit: "cover",
+                        display: "block",
+                        borderRadius: "3px",
+                      }}
+                    />
                   </Box>
 
                   {/* Card body */}
@@ -283,54 +283,54 @@ export default function FacilityManagementServices() {
         </Container>
       </Box>
 
-       {/* ── Satisfaction Guarantee ── */}
+      {/* ── Satisfaction Guarantee ── */}
+      <Box
+        sx={{
+          backgroundColor: "#677695",
+          py: { xs: 5, md: 5 },
+        }}
+      >
+        <Container maxWidth="xl">
           <Box
-  sx={{
-    backgroundColor: "#677695",
-    py: { xs: 5, md: 5 },
-  }}
->
-  <Container maxWidth="xl">
-    <Box
-      sx={{
-        backgroundColor: "#c8ced6",
-        borderRadius: "6px",
-        maxWidth: "1290px",
-        mx: "auto",
-        px: { xs: 3, md: 5 },
-        py: { xs: 4, md: 7 },
-      }}
-    >
-      <Typography
-        align="center"
-        sx={{
-          color: colors.navy,
-          fontWeight: 800,
-          fontSize: { xs: "1.3rem", md: "2.5rem" },
-          fontFamily: "'Poppins', sans-serif",
-          mb: 1.5,
-        }}
-      >
-        Satisfaction Guarantee
-      </Typography>
+            sx={{
+              backgroundColor: "#c8ced6",
+              borderRadius: "6px",
+              maxWidth: "1290px",
+              mx: "auto",
+              px: { xs: 3, md: 5 },
+              py: { xs: 4, md: 7 },
+            }}
+          >
+            <Typography
+              align="center"
+              sx={{
+                color: colors.navy,
+                fontWeight: 800,
+                fontSize: { xs: "1.3rem", md: "2.5rem" },
+                fontFamily: "'Poppins', sans-serif",
+                mb: 1.5,
+              }}
+            >
+              Satisfaction Guarantee
+            </Typography>
 
-      <Typography
-        align="center"
-        sx={{
-          color: colors.navy,
-          fontSize: { xs: "0.85rem", md: "0.92rem" },
-          lineHeight: 1.75,
-          maxWidth: 560,
-          mx: "auto",
-        }}
-      >
-        iFathom guarantees reliable, high-quality IT solutions tailored to
-        your business needs, ensuring satisfaction through expert service
-        and support.
-      </Typography>
-    </Box>
-  </Container>
-</Box>
+            <Typography
+              align="center"
+              sx={{
+                color: colors.navy,
+                fontSize: { xs: "0.85rem", md: "0.92rem" },
+                lineHeight: 1.75,
+                maxWidth: 560,
+                mx: "auto",
+              }}
+            >
+              iFathom guarantees reliable, high-quality IT solutions tailored to
+              your business needs, ensuring satisfaction through expert service
+              and support.
+            </Typography>
+          </Box>
+        </Container>
+      </Box>
     </Box>
   );
 }

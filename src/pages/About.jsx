@@ -173,7 +173,7 @@ export default function About() {
             sx={{
               color: colors.white,
               fontWeight: 800,
-              fontSize: { xs: "1.6rem", sm: "2rem", md: "3.6rem" },
+              fontSize: { xs: "1.5rem", sm: "2rem", md: "4rem" },
               fontFamily: "anton, sans-serif",
               lineHeight: 1.2,
               textShadow: "0 2px 12px rgba(0,0,0,0.5)",

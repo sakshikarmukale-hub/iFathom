@@ -7,6 +7,7 @@ import heroBg from "../assets/home-hero.jpg";
 import expertiseProgramming from "../assets/home-expertise-programming.png";
 import expertiseServices from "../assets/home-expertise-services.png";
 import expertiseFms from "../assets/home-expertise-fms.png";
+import { Scale } from "@mui/icons-material";
 
 const HERO_BG = heroBg;
 
@@ -150,7 +151,7 @@ export default function Home() {
               sx={{
                 color: colors.white,
                 fontWeight: 800,
-                fontSize: { xs: "1.6rem", sm: "2rem", md: "2.4rem" },
+                fontSize: { xs: "1.6rem", sm: "2rem", md: "2rem" },
                 lineHeight: 1.1,
                 letterSpacing: "-3px",
                 mb: 1,
@@ -167,11 +168,12 @@ export default function Home() {
               sx={{
                 color: colors.white,
                 fontWeight: 500,
-                fontSize: { xs: "1rem", sm: "1.1rem", md: "1.25rem" },
+                fontSize: { xs: "1rem", sm: "1.1rem", md: "1.44rem" },
                 lineHeight: 1.5,
                 mb: 2.5,
                 textTransform: "uppercase",
                 letterSpacing: 0.9,
+                //transform: Scale(2.1),
                 fontFamily: "open sans, sans-serif",
                 textShadow: "0 2px 8px rgba(0,0,0,0.4)",
               }}
@@ -184,6 +186,7 @@ export default function Home() {
                 fontSize: { xs: "0.82rem", sm: "0.98rem" },
                 lineHeight: 1.65,
                 mb: 3.5,
+                fontWeight: 500,
                 maxWidth: 900,
                 fontFamily: "open sans, sans-serif",
                 textShadow: "0 1px 4px rgba(0,0,0,0.5)",
@@ -199,7 +202,7 @@ export default function Home() {
               sx={{
                 backgroundColor: colors.accent,
                 color: colors.white,
-                fontWeight: 600,
+                fontWeight: 500,
                 px: 3,
                 py: 1,
                 borderRadius: "8px",
@@ -341,7 +344,7 @@ export default function Home() {
                 inset: 0,
                 width: "80%",
                 height: "80%",
-                mt:8,
+                mt: 8,
                 pointerEvents: "none",
 
                 "@keyframes rotateCW": {
@@ -358,11 +361,11 @@ export default function Home() {
               }}
             >
               <polygon
-  points="65,6 135,6 194,65 194,135 135,194 65,194 6,135 6,65"
-  fill="none"
-  stroke="rgba(255,255,255,0.35)"
-  strokeWidth="0.5"
-/>
+                points="65,6 135,6 194,65 194,135 135,194 65,194 6,135 6,65"
+                fill="none"
+                stroke="rgba(255,255,255,0.35)"
+                strokeWidth="0.5"
+              />
             </Box>
 
             {/* Inner Hexagon */}
@@ -375,7 +378,7 @@ export default function Home() {
                 top: "22%",
                 width: "80%",
                 height: "80%",
-                mt:1,
+                mt: 1,
                 pointerEvents: "none",
 
                 "@keyframes rotateCCW": {
@@ -392,11 +395,11 @@ export default function Home() {
               }}
             >
               <polygon
-  points="65,6 135,6 194,65 194,135 135,194 65,194 6,135 6,65"
-  fill="none"
-  stroke="rgba(255,255,255,0.45)"
-  strokeWidth="0.5"
-/>
+                points="65,6 135,6 194,65 194,135 135,194 65,194 6,135 6,65"
+                fill="none"
+                stroke="rgba(255,255,255,0.45)"
+                strokeWidth="0.5"
+              />
             </Box>
 
             {/* Know More */}
@@ -540,9 +543,9 @@ export default function Home() {
                       height: { xs: 130, md: 150 },
                       objectFit: "cover",
                       display: "block",
-                      py:1,
-                      px:1,
-                      borderRadius:4,
+                      py: 1,
+                      px: 1,
+                      borderRadius: 4,
                     }}
                   />
 
@@ -553,7 +556,7 @@ export default function Home() {
                       flexGrow: 1,
                       display: "flex",
                       flexDirection: "column",
-                      height:250,
+                      height: 250,
                     }}
                   >
                     <Typography
@@ -575,13 +578,13 @@ export default function Home() {
                       sx={{
                         color: colors.navy,
                         fontSize: { xs: "0.78rem", md: "0.82rem" },
-                        mt:4,
+                        mt: 4,
                         lineHeight: 1.25,
                         mb: 2,
                         fontFamily: "'Open Sans', sans-serif",
                         flexGrow: 1,
                         transform: "scaleY(1.5)",
-                        letterSpacing:0.7,
+                        letterSpacing: 0.7,
                       }}
                     >
                       {item.description}
@@ -594,10 +597,10 @@ export default function Home() {
                         to={item.to}
                         variant="outlined"
                         sx={{
-                          backgroundColor:colors.navy,
+                          backgroundColor: colors.navy,
                           borderColor: colors.navy,
                           color: colors.white,
-                          fontWeight: 600,
+                          fontWeight: 500,
                           fontSize: "0.75rem",
                           textTransform: "none",
                           px: 3,

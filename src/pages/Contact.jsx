@@ -181,8 +181,8 @@ export default function Contact() {
                 color: "#ffffff",
                 fontFamily:
                   "'Roboto Condensed', 'Arial Narrow', Arial, sans-serif",
-                fontWeight: 800,
-                fontSize: "0.82rem",
+                fontWeight: 900,
+                fontSize: "1rem",
                 mb: 1,
               }}
             >
@@ -196,10 +196,7 @@ export default function Contact() {
                 color: "#ffffff",
                 textDecoration: "none",
                 fontFamily: "Arial, sans-serif",
-                fontSize: "0.85rem",
-                "&:hover": {
-                  textDecoration: "underline",
-                },
+                fontSize: "0.90rem",
               }}
             >
               info@ifathomgroup.com
@@ -214,8 +211,8 @@ export default function Contact() {
                 color: "#ffffff",
                 fontFamily:
                   "'Roboto Condensed', 'Arial Narrow', Arial, sans-serif",
-                fontWeight: 800,
-                fontSize: "0.82rem",
+                fontWeight: 900,
+                fontSize: "1rem",
                 mb: 1,
               }}
             >
@@ -229,10 +226,7 @@ export default function Contact() {
                 color: "#ffffff",
                 textDecoration: "none",
                 fontFamily: "Arial, sans-serif",
-                fontSize: "0.85rem",
-                "&:hover": {
-                  textDecoration: "underline",
-                },
+                fontSize: "0.90rem",
               }}
             >
               +91 9820663764
@@ -247,8 +241,8 @@ export default function Contact() {
                 color: "#ffffff",
                 fontFamily:
                   "'Roboto Condensed', 'Arial Narrow', Arial, sans-serif",
-                fontWeight: 800,
-                fontSize: "0.82rem",
+                fontWeight: 900,
+                fontSize: "1rem",
                 mb: 0.8,
               }}
             >
