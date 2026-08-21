@@ -141,7 +141,7 @@ function JobCard({ job }) {
           sx={{
             color: colors.navyDark,
             fontWeight: 700,
-            fontFamily: headingFont,
+            fontFamily: "anton, sans-serif",
             fontSize: { xs: "1.15rem", md: "1.4rem" },
             mb: 0.5,
           }}
@@ -240,7 +240,7 @@ export default function Careers() {
             linear-gradient(135deg, #6b2fbf 0%, #1a1030 30%, #0a0a14 50%, #0d1f2d 70%, #1f7a7a 100%)
           `,
           py: { xs: 10, md: 14 },
-          minHeight: { xs: 280, md: 320 },
+          minHeight: { xs: 280, md: 420 },
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
@@ -251,19 +251,22 @@ export default function Careers() {
           <Typography
             sx={{
               color: colors.white,
-              fontWeight: 700,
-              fontFamily: headingFont,
-              letterSpacing: 1,
-              lineHeight: 1.1,
-              fontSize: { xs: "2.4rem", sm: "3.2rem", md: "4rem" },
+              fontWeight: 900,
+              fontFamily: "anton, sans-serif",
+              letterSpacing: 0,
+              lineHeight: 0.90,
+              fontSize: { xs: "2rem", sm: "2.5rem", md: "2.90rem" },
               textShadow: "0 4px 20px rgba(0,0,0,0.4)",
+              transform: "scaleY(1.3)",
+              mt: 30,
+
             }}
           >
             Grow with
             <br />
             <Box
               component="span"
-              sx={{ fontSize: { xs: "3.2rem", sm: "4.2rem", md: "5.2rem" } }}
+              sx={{ fontSize: { xs: "3.2rem", sm: "3.5rem", md: "4rem", transform: "scaleY(1.3)",} }}
             >
               iFathom
             </Box>
@@ -284,12 +287,13 @@ export default function Careers() {
           <Typography
             sx={{
               color: colors.navyDark,
-              fontWeight: 700,
-              fontFamily: headingFont,
-              letterSpacing: 0.5,
+              fontWeight: 900,
+              fontFamily: "anton, sans-serif",
+              letterSpacing: 0.1,
               lineHeight: 1.3,
               fontSize: { xs: "1.8rem", sm: "2.4rem", md: "2.8rem" },
               mb: 4,
+               transform: "scaleY(1.3)",
             }}
           >
             Do your life's best work at iFathom.
@@ -299,7 +303,7 @@ export default function Careers() {
             sx={{
               color: colors.navyDark,
               fontWeight: 600,
-              fontFamily: headingFont,
+              fontFamily: "anton, sans-serif",
               lineHeight: 2.2,
               fontSize: { xs: "1.05rem", sm: "1.25rem", md: "1.4rem" },
             }}
@@ -333,7 +337,7 @@ export default function Careers() {
               sx={{
                 color: colors.white,
                 fontWeight: 600,
-                fontFamily: headingFont,
+                fontFamily: "anton, sans-serif",
                 fontSize: { xs: "1.6rem", md: "2rem" },
               }}
             >
@@ -366,7 +370,7 @@ export default function Careers() {
             sx={{
               color: "#4FD1E8",
               fontWeight: 700,
-              fontFamily: headingFont,
+              fontFamily: "anton, sans-serif",
               fontSize: { xs: "1.8rem", md: "2.6rem" },
               mb: 2.5,
               textShadow: "0 0 25px rgba(79,209,232,0.6)",
@@ -405,7 +409,7 @@ export default function Careers() {
             sx={{
               color: "rgba(255,255,255,0.88)",
               fontWeight: 600,
-              fontFamily: headingFont,
+              fontFamily: "anton, sans-serif",
               fontSize: { xs: "1.05rem", md: "1.25rem" },
               mb: 1,
             }}
