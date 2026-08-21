@@ -8,13 +8,11 @@ import {
   IconButton,
 } from "@mui/material";
 import colors from "../assets/colors";
-import aboutHero from "../assets/about-hero.jpg";
+import aboutHeroVideo from "../assets/about-hero.mp4";
 import aboutCardBg from "../assets/aboutcardbg.png";
 import socialLinkedin from "../assets/social-linkedin.png";
 import socialFacebook from "../assets/social-facebook.png";
 import socialInstagram from "../assets/social-instagram.png";
-
-const HERO_IMG = aboutHero;
 
 const socials = [
   {
@@ -92,44 +90,24 @@ export default function About() {
           width: "100%",
           height: { xs: 320, sm: 380, md: 540 },
           overflow: "hidden",
-          // subtle perspective so the zoom reads as depth rather than a flat scale
-          perspective: "1000px",
         }}
       >
+        {/* Hero video */}
         <Box
-          component="img"
-          src={HERO_IMG}
-          alt="About iFathom"
+          component="video"
+          src={aboutHeroVideo}
+          autoPlay
+          muted
+          loop
+          playsInline
           sx={{
+            position: "absolute",
+            inset: 0,
             width: "100%",
             height: "100%",
             objectFit: "cover",
             objectPosition: "center",
             display: "block",
-            animation: "aboutHeroZoomBlink 2s ease-in-out infinite",
-
-"@keyframes aboutHeroZoomBlink": {
-  "0%": {
-    transform: "scale(1.12)",
-    filter: "brightness(1)",
-  },
-  "25%": {
-    transform: "scale(1.08)",
-    filter: "brightness(1.08)",
-  },
-  "50%": {
-    transform: "scale(1.04)",
-    filter: "brightness(1)",
-  },
-  "75%": {
-    transform: "scale(1.01)",
-    filter: "brightness(1.08)",
-  },
-  "100%": {
-    transform: "scale(1.12)",
-    filter: "brightness(1)",
-  },
-},
           }}
         />
         {/* Soft inset shadow for added depth around the edges */}
