@@ -4,6 +4,7 @@ import CssBaseline from "@mui/material/CssBaseline";
 import Navbar from "./components/Navbar.jsx";
 import Footer from "./components/Footer.jsx";
 import AppRoutes from "./Routes/AppRoutes.jsx";
+import ScrollToTop from "./components/ScrollToTop.jsx";
 import "@fontsource/oswald/500.css";
 import "@fontsource/oswald/600.css";
 import "@fontsource/oswald/700.css";
@@ -74,6 +75,7 @@ export default function App() {
       >
         <Navbar />
         <Box component="main" sx={{ flex: 1 }}>
+          <ScrollToTop />
           <AppRoutes />
         </Box>
         <Footer />
