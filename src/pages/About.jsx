@@ -326,9 +326,9 @@ export default function About() {
                 >
                   <Typography
                     sx={{
-                      color: "rgba(255,255,255,0.7)",
-                      fontSize: "0.78rem",
-                      fontWeight: 600,
+                      color: "#fff",
+                      fontSize: "1rem",
+                      fontWeight: 800,
                       mb: 1,
                       textTransform: "none",
                       letterSpacing: 0.2,
@@ -341,11 +341,11 @@ export default function About() {
                     href="tel:+919820663764"
                     sx={{
                       color: colors.white,
-                      fontWeight: 600,
+                      fontWeight: 500,
                       fontSize: { xs: "0.88rem", md: "0.95rem" },
                       textDecoration: "none",
                       display: "block",
-                      "&:hover": { color: colors.accent },
+                      //"&:hover": { color: colors.accent },
                     }}
                   >
                     +91 9820663764
@@ -389,9 +389,9 @@ export default function About() {
                 >
                   <Typography
                     sx={{
-                      color: "rgba(255,255,255,0.7)",
-                      fontSize: "0.78rem",
-                      fontWeight: 600,
+                      color: "#fff",
+                      fontSize: "1rem",
+                      fontWeight: 800,
                       mb: 1,
                     }}
                   >
@@ -402,12 +402,12 @@ export default function About() {
                     href="mailto:info@ifathomgroup.com"
                     sx={{
                       color: colors.white,
-                      fontWeight: 600,
+                      fontWeight: 500,
                       fontSize: { xs: "0.85rem", md: "0.92rem" },
                       textDecoration: "none",
                       display: "block",
                       wordBreak: "break-all",
-                      "&:hover": { color: colors.accent },
+                      //"&:hover": { color: colors.accent },
                     }}
                   >
                     info@ifathomgroup.com
@@ -451,9 +451,9 @@ export default function About() {
                 >
                   <Typography
                     sx={{
-                      color: "rgba(255,255,255,0.7)",
-                      fontSize: "0.78rem",
-                      fontWeight: 600,
+                      color: "#fff",
+                      fontSize: "1rem",
+                      fontWeight: 800,
                       mb: 1.25,
                     }}
                   >

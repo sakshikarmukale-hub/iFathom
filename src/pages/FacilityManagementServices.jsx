@@ -143,7 +143,7 @@ export default function FacilityManagementServices() {
     sx={{
       color: colors.white,
       fontWeight: 800,
-      fontSize: { xs: "1.3rem", sm: "1.7rem", md: "3rem" },
+      fontSize: { xs: "1.3rem", sm: "1.7rem", md: "3.5rem" },
       fontFamily: "'Poppins', sans-serif",
       lineHeight: 1.15,
       mb: 1.5,
@@ -284,51 +284,53 @@ export default function FacilityManagementServices() {
       </Box>
 
        {/* ── Satisfaction Guarantee ── */}
-      <Box
+          <Box
+  sx={{
+    backgroundColor: "#677695",
+    py: { xs: 5, md: 5 },
+  }}
+>
+  <Container maxWidth="xl">
+    <Box
+      sx={{
+        backgroundColor: "#c8ced6",
+        borderRadius: "6px",
+        maxWidth: "1290px",
+        mx: "auto",
+        px: { xs: 3, md: 5 },
+        py: { xs: 4, md: 7 },
+      }}
+    >
+      <Typography
+        align="center"
         sx={{
-          backgroundColor: "#3a3f47",
-          py: { xs: 5, md: 5 },
+          color: colors.navy,
+          fontWeight: 800,
+          fontSize: { xs: "1.3rem", md: "2.5rem" },
+          fontFamily: "'Poppins', sans-serif",
+          mb: 1.5,
         }}
       >
-        <Container maxWidth="xl">
-          <Box
-            sx={{
-              backgroundColor: "#b0b8c5",
-              borderRadius: "6px",
-              px: { xs: 3, md: 5 },
-              py: { xs: 4, md: 7 },
-            }}
-          >
-            <Typography
-              align="center"
-              sx={{
-                color: colors.navy,
-                fontWeight: 800,
-                fontSize: { xs: "1.3rem", md: "1.6rem" },
-                fontFamily: "'Poppins', sans-serif",
-                mb: 1.5,
-              }}
-            >
-              Satisfaction Guarantee
-            </Typography>
+        Satisfaction Guarantee
+      </Typography>
 
-            <Typography
-              align="center"
-              sx={{
-                color: colors.navy,
-                fontSize: { xs: "0.85rem", md: "0.92rem" },
-                lineHeight: 1.75,
-                maxWidth: 560,
-                mx: "auto",
-              }}
-            >
-              iFathom guarantees reliable, high-quality IT solutions tailored to
-              your business needs, ensuring satisfaction through expert service
-              and support.
-            </Typography>
-          </Box>
-        </Container>
-      </Box>
+      <Typography
+        align="center"
+        sx={{
+          color: colors.navy,
+          fontSize: { xs: "0.85rem", md: "0.92rem" },
+          lineHeight: 1.75,
+          maxWidth: 560,
+          mx: "auto",
+        }}
+      >
+        iFathom guarantees reliable, high-quality IT solutions tailored to
+        your business needs, ensuring satisfaction through expert service
+        and support.
+      </Typography>
+    </Box>
+  </Container>
+</Box>
     </Box>
   );
 }

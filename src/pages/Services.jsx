@@ -180,158 +180,173 @@ export default function Services() {
       </Box>
 
       {/* ── Services We Offer ── */}
-      <Box sx={{ backgroundColor: colors.white, py: { xs: 5, md: 6 } }}>
-        <Container maxWidth="md">
-          {/* Section heading + underline with scroll-animated orange dot */}
-          <Box sx={{ mb: { xs: 4, md: 5 } }}>
-            <Typography
-              sx={{
-                color: colors.navy,
-                fontWeight: 800,
-                fontSize: { xs: "1.9rem", sm: "2.3rem", md: "2.6rem" },
-                fontFamily: "anton, sans-serif",
-                letterSpacing: 0.5,
-                mb: 1.5,
-              }}
-            >
-              Services We Offer
-            </Typography>
+      <Box sx={{ backgroundColor: colors.white, py: { xs: 4, md: 5 } }}>
+  <Container maxWidth="md">
+    {/* Section heading */}
+    <Box sx={{ mb: { xs: 3, md: 4 } }}>
+      <Typography
+        sx={{
+          color: colors.navy,
+          fontWeight: 800,
+          fontSize: { xs: "1.8rem", sm: "2.2rem", md: "2.5rem" },
+          fontFamily: "anton, sans-serif",
+          letterSpacing: 0.5,
+          mb: 1.5,
+        }}
+      >
+        Services We Offer
+      </Typography>
 
+      <Box
+        sx={{
+          position: "relative",
+          width: "100%",
+          height: 2,
+          backgroundColor:
+            colors.border || "rgba(10,31,61,0.25)",
+        }}
+      >
+        <Box
+          sx={{
+            position: "absolute",
+            top: "50%",
+            left: `${scrollPercent}%`,
+            width: 12,
+            height: 12,
+            borderRadius: "50%",
+            backgroundColor: colors.accent,
+            transform: "translate(-50%, -50%)",
+            transition: "left 0.15s ease-out",
+          }}
+        />
+      </Box>
+    </Box>
+
+    {/* Cards */}
+    <Grid container spacing={{ xs: 2, md: 2 }}>
+      {services.map((s) => (
+        <Grid item xs={12} sm={6} md={4} key={s.title}>
+          <Box
+            sx={{
+              border: `1px solid ${colors.border}`,
+              borderRadius: "6px",
+              overflow: "hidden",
+              height: { xs: "auto", md: 365 },
+              display: "flex",
+              flexDirection: "column",
+              backgroundColor: colors.white,
+              boxShadow: "0 3px 10px rgba(0,0,0,0.12)",
+            }}
+          >
+            {/* Image */}
+            <Box
+              component="img"
+              src={s.image}
+              alt={s.title}
+              sx={{
+                width: "100%",
+                height: { xs: 180, sm: 175, md: 177 },
+                objectFit: "cover",
+                display: "block",
+              }}
+            />
+
+            {/* Content */}
             <Box
               sx={{
-                position: "relative",
-                width: "100%",
-                height: 2,
-                backgroundColor: colors.border || "rgba(10,31,61,0.25)",
+                px: { xs: 2, md: 2 },
+                pt: { xs: 1.5, md: 2 },
+                pb: 2,
+                flexGrow: 1,
               }}
             >
-              <Box
+              <Typography
                 sx={{
-                  position: "absolute",
-                  top: "50%",
-                  left: `${scrollPercent}%`,
-                  width: 12,
-                  height: 12,
-                  borderRadius: "50%",
-                  backgroundColor: colors.accent,
-                  transform: "translate(-50%, -50%)",
-                  transition: "left 0.15s ease-out",
-                  boxShadow: "0 0 6px rgba(0,0,0,0.15)",
+                  color: colors.navy,
+                  fontWeight: 800,
+                  fontSize: {
+                    xs: "1rem",
+                    sm: "1.05rem",
+                    md: "1.2rem",
+                  },
+                  mb: 2,
+                  lineHeight: 1.25,
+                  fontFamily: "anton, sans-serif",
                 }}
-              />
+              >
+                {s.title}
+              </Typography>
+
+              <Typography
+                sx={{
+                  color: colors.navy,
+                  fontSize: {
+                    xs: "0.88rem",
+                    sm: "0.9rem",
+                    md: "0.95rem",
+                  },
+                  lineHeight: 1.4,
+                  fontFamily: "'Poppins', sans-serif",
+                }}
+              >
+                {s.description}
+              </Typography>
             </Box>
           </Box>
-
-          {/* Service cards grid */}
-          <Grid container spacing={2}>
-            {services.map((s) => (
-              <Grid item xs={12} sm={6} md={4} key={s.title}>
-                <Box
-                  sx={{
-                    border: `1px solid ${colors.border}`,
-                    borderRadius: "4px",
-                    overflow: "hidden",
-                    height: "100%",
-                    display: "flex",
-                    flexDirection: "column",
-                    backgroundColor: colors.white,
-                    transition: "box-shadow 0.2s",
-                    "&:hover": {
-                      boxShadow: "0 4px 16px rgba(10,31,61,0.1)",
-                    },
-                  }}
-                >
-                  {/* Full-width cover image */}
-                  <Box
-                    component="img"
-                    src={s.image}
-                    alt={s.title}
-                    sx={{
-                      width: "100%",
-                      height: { xs: 150, md: 165 },
-                      objectFit: "cover",
-                      display: "block",
-                    }}
-                  />
-
-                  {/* Card body */}
-                  <Box sx={{ px: 2, pt: 1.5, pb: 2, flexGrow: 1 }}>
-                    <Typography
-                      sx={{
-                        color: colors.navy,
-                        fontWeight: 700,
-                        fontSize: { xs: "0.95rem", md: "1.02rem" },
-                        mb: 0.75,
-                        lineHeight: 1.35,
-                        fontFamily: "'Poppins', sans-serif",
-                      }}
-                    >
-                      {s.title}
-                    </Typography>
-
-                    <Typography
-                      sx={{
-                        color: colors.grayText,
-                        fontSize: { xs: "0.82rem", md: "0.86rem" },
-                        lineHeight: 1.6,
-                      }}
-                    >
-                      {s.description}
-                    </Typography>
-                  </Box>
-                </Box>
-              </Grid>
-            ))}
-          </Grid>
-        </Container>
-      </Box>
+        </Grid>
+      ))}
+    </Grid>
+  </Container>
+</Box>
 
       {/* ── Satisfaction Guarantee ── */}
       <Box
+  sx={{
+    backgroundColor: "#677695",
+    py: { xs: 5, md: 5 },
+  }}
+>
+  <Container maxWidth="xl">
+    <Box
+      sx={{
+        backgroundColor: "#c8ced6",
+        borderRadius: "6px",
+        maxWidth: "1290px",
+        mx: "auto",
+        px: { xs: 3, md: 5 },
+        py: { xs: 4, md: 7 },
+      }}
+    >
+      <Typography
+        align="center"
         sx={{
-          backgroundColor: "#3a3f47",
-          py: { xs: 5, md: 5 },
+          color: colors.navy,
+          fontWeight: 800,
+          fontSize: { xs: "1.3rem", md: "2.5rem" },
+          fontFamily: "'Poppins', sans-serif",
+          mb: 1.5,
         }}
       >
-        <Container maxWidth="xl">
-          <Box
-            sx={{
-              backgroundColor: "#b0b8c5",
-              borderRadius: "6px",
-              px: { xs: 3, md: 5 },
-              py: { xs: 4, md: 7 },
-            }}
-          >
-            <Typography
-              align="center"
-              sx={{
-                color: colors.navy,
-                fontWeight: 800,
-                fontSize: { xs: "1.3rem", md: "1.6rem" },
-                fontFamily: "'Poppins', sans-serif",
-                mb: 1.5,
-              }}
-            >
-              Satisfaction Guarantee
-            </Typography>
+        Satisfaction Guarantee
+      </Typography>
 
-            <Typography
-              align="center"
-              sx={{
-                color: colors.navy,
-                fontSize: { xs: "0.85rem", md: "0.92rem" },
-                lineHeight: 1.75,
-                maxWidth: 560,
-                mx: "auto",
-              }}
-            >
-              iFathom guarantees reliable, high-quality IT solutions tailored to
-              your business needs, ensuring satisfaction through expert service
-              and support.
-            </Typography>
-          </Box>
-        </Container>
-      </Box>
+      <Typography
+        align="center"
+        sx={{
+          color: colors.navy,
+          fontSize: { xs: "0.85rem", md: "0.92rem" },
+          lineHeight: 1.75,
+          maxWidth: 560,
+          mx: "auto",
+        }}
+      >
+        iFathom guarantees reliable, high-quality IT solutions tailored to
+        your business needs, ensuring satisfaction through expert service
+        and support.
+      </Typography>
+    </Box>
+  </Container>
+</Box>
     </Box>
   );
 }

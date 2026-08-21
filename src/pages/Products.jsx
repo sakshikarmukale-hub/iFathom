@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Box, Container, Grid, Typography, Button } from "@mui/material";
 import colors from "../assets/colors";
 import productsHero from "../assets/products-hero.jpg";
@@ -7,6 +7,11 @@ import productServers from "../assets/product-servers.jpg";
 import productLaptops from "../assets/product-laptops.png";
 import productPrinters from "../assets/product-printers.png";
 import productVideoconf from "../assets/product-videoconf.jpg";
+import productSurveillence from "../assets/product-surveillence.png";
+import productCybersecurity from "../assets/product-cyber_security.png";
+import ProductScanners from "../assets/product-scanners.png";
+import productPlotters from "../assets/product-plotters.png";
+import productUps from "../assets/product-ups.png";
 
 const HERO_IMG = productsHero;
 
@@ -41,9 +46,35 @@ const products = [
     title: "VIDEO CONFERENCING",
     brands: "CISCO, Logitech, Polycom, Vu",
   },
+  {
+    image: productSurveillence,
+    title: "SURVEILLANCE",
+    brands: "Hikvision, Honeywell, CP Plus",
+  },
+  {
+    image: productCybersecurity,
+    title: "CYBER SECURITY",
+    brands: "FortiGate, Sophos, SonicWall",
+  },
+  {
+    image: ProductScanners,
+    title: "SCANNERS",
+    brands: "Epson, HP",
+  },
+  {
+    image: productPlotters,
+    title: "PLOTTERS",
+    brands: "Canon, HP",
+  },
+  {
+    image: productUps,
+    title: "UPS",
+    brands: "APC, Powercom , Vertiv",
+  },
 ];
 
 export default function Products() {
+    const [showAll, setShowAll] = useState(false);
   return (
     <Box>
       {/* ── Hero Banner ── */}
@@ -133,7 +164,7 @@ export default function Products() {
 
       {/* ── Products Grid ── */}
       <Box sx={{ backgroundColor: colors.white, py: { xs: 5, md: 6 } }}>
-        <Container maxWidth="lg">
+        <Container maxWidth="md">
           <Box
             sx={{
               display: "flex",
@@ -143,7 +174,7 @@ export default function Products() {
               justifyContent: { xs: "center", sm: "flex-start" },
             }}
           >
-            {products.map((p) => (
+            {(showAll ? products : products.slice(0, 6)).map((p) => (
               <Box
                 key={p.title}
                 sx={{
@@ -205,11 +236,11 @@ export default function Products() {
                   <Typography
                     sx={{
                       color: colors.navy,
-                      fontWeight: 700,
-                      fontSize: { xs: "0.82rem", md: "0.88rem" },
+                      fontWeight: 800,
+                      fontSize: { xs: "1rem", md: "1.2rem" },
                       mb: 0.4,
                       textTransform: "uppercase",
-                      letterSpacing: 0.4,
+                      letterSpacing: 0.2,
                       fontFamily: "'Poppins', sans-serif",
                     }}
                   >
@@ -239,25 +270,26 @@ export default function Products() {
             }}
           >
             <Button
-              variant="text"
-              disableRipple
-              sx={{
-                color: colors.navy,
-                fontWeight: 500,
-                fontSize: "0.95rem",
-                textDecoration: "underline",
-                textUnderlineOffset: "3px",
-                textTransform: "none",
-                p: 0,
-                minWidth: 0,
-                "&:hover": {
-                  backgroundColor: "transparent",
-                  color: colors.accent,
-                },
-              }}
-            >
-              Show More
-            </Button>
+  variant="text"
+  disableRipple
+  onClick={() => setShowAll(!showAll)}
+  sx={{
+    color: colors.navy,
+    fontWeight: 500,
+    fontSize: "0.95rem",
+    textDecoration: "underline",
+    textUnderlineOffset: "3px",
+    textTransform: "none",
+    p: 0,
+    minWidth: 0,
+    "&:hover": {
+      backgroundColor: "transparent",
+      color: colors.accent,
+    },
+  }}
+>
+  {showAll ? "Show Less" : "Show More"}
+</Button>
           </Box>
         </Container>
       </Box>
